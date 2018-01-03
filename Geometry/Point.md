@@ -70,7 +70,7 @@ double DEG_to_RAD(double deg) {
 Uses the following formula to convert degrees to radians:
 ![alt text](http://www.radianstodegrees.net/img/degrees-to-radians2.png)
 
-### dist
+### distance
 
 Gets the distance between two points.
 
@@ -122,7 +122,7 @@ double ANG(double rad) { return rad*180/PI; }
 
 Uses the same formula from _DEG_to_RAD()_ to convert the given radians to degrees.
 
-### angulo 
+### angulo
 
 ```cpp
 
