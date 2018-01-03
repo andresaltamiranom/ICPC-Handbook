@@ -1,10 +1,10 @@
 # Point
 
-### Declaración de constante π (pi)
+### Declaring π (pi) constant
 ```cpp
 const double PI = 2*asin(1);
 ```
-## Funciones auxiliares
+## Helper functions
 
 ### equals
 ```cpp
@@ -13,11 +13,11 @@ bool eq(double a, double b) { return fabs(a-b) < EPS; }
 
 ```
 
-**Entrada:** Dos valores flotantes _a_ y _b_.
+**Input:** Two double values _a_ and _b_.
 
-**Retorno:** Regresa si el primer parámetro _a_ es igual al segundo parámetro _b_.
+**Output:** A boolean, whether _a_ is equal to _b_ or not.
 
-Obtiene el valor absoluto de la resta de dos flotantes y asegura que sea menor a un margen de error _EPS_.
+Gets the absolute value of the subtraction of _a_ and _b_ and considers them equal if the difference is less than a margin of error _EPS_.
 
 ### less than
 ```cpp
@@ -26,11 +26,11 @@ bool les(double a, double b) { return !eq(a, b) && a < b; }
 
 ```
 
-**Entrada:** Dos valores flotantes _a_ y _b_.
+**Input:** Two double values _a_ and _b_.
 
-**Retorno:** Regresa si el primer parámetro _a_ es menor al segundo parámetro _b_.
+**Output:** A boolean, whether _a_ is less than _b_ or not.
 
-Usa la función auxiliar _eq_ para asegurar que los valores de los parámetros no sean iguales y compara _a_ menor a _b_. Es necesario llamar la función _eq_ para asegurar que el punto flotante no sea igual dado el margen de _EPS_.
+Uses the helper function _eq()_ to make sure the two values are not equal and then compares  _a_ < _b_. It's necessary to call _eq()_ first because _a_ could be less than _b_ by a very small margin less than _EPS_, by which we consider _a_ to be equal to _b_.
 
 ## Struct Point
 
@@ -53,7 +53,7 @@ struct Point {
 
 ### DEG_to_RAD
 
-Conversión de grados a radianes.
+Converts degrees to radians.
 
 ```cpp
 
@@ -63,16 +63,16 @@ double DEG_to_RAD(double deg) {
 
 ```
 
-**Entrada:** Un valor flotante _deg_ que representa un valor en grados.
+**Input:** A double value _deg_ which represents a value in degrees.
 
-**Retorno:** Un valor flotante que representa el valor del parámetro en radianes.
+**Output:** A double value which represents the value of _deg_ in radians.
 
-Usa la fórmula tradicional para convertir de grados a radianes:
+Uses the following formula to convert degrees to radians:
 ![alt text](http://www.radianstodegrees.net/img/degrees-to-radians2.png)
 
 ### dist
 
-Obtiene la distancia entre dos puntos
+Gets the distance between two points.
 
 ```cpp
 
@@ -81,11 +81,11 @@ double dist(Point p1, Point p2) {
 	
 ```
 
-**Entrada:** Dos puntos _p1_ y _p2_.
+**Input:** Two Point structs, _p1_ and _p2_.
 
-**Retorno:** Valor flotante que representa la distancia entre los puntos dados como parámetro.
+**Output:** Double value representing the distance between _p1_ and _p2_.
 
-Usa la fórmula tradicional para obtener la distancia entre dos puntos:
+Uses the following formula to get the distance between two points:
 
 ![alt text](http://www.onlinemath4all.com/images/dbtpformula.png)
 
@@ -101,11 +101,11 @@ Point rotate(Point p, double theta) {
 
 ```
 
-**Entrada:** Un Point _p_ relativo al origen del plano y un valor flotante _theta_ que representa el ángulo de rotación en grados.
+**Input:** A Point _p_ relative to the plane's origin and a double value _theta_ representing the angle of rotation in degrees.
 
-**Retorno:** Un punto con la rotación del ángulo _theta_ dado.
+**Output:** A Point after the rotation _theta_ has been applied.
 
-Construye un objeto Point nuevo, pasando en el constructor los puntos ajustados al ángulo dado, usando la ecuación tradicional de rotación de puntos:
+Constructs a new Point struct, passing to the constructor the X and Y coordinates adjusted to the given angle, using the following equation to rotate a point:
 
 ![alt text](https://wikimedia.org/api/rest_v1/media/math/render/svg/4e8193cc301ba228063af7ecdf292c2b8c7e76d3)
 
@@ -116,11 +116,11 @@ Construye un objeto Point nuevo, pasando en el constructor los puntos ajustados 
 double ANG(double rad) { return rad*180/PI; }
 
 ```
-**Entrada:** Un valor flotante que representa el ángulo en radianes.
+**Input:** A double value representing an angle in radians.
 
-**Retorno:** Un valor flotante que representa el ángulo en grados.
+**Output:** A double valie which represents the value of _rad_ in degrees.
 
-Usa el despeje de la fórmula de la ecuación _DEG_to_RAD_ para convertir los radianes dados a grados.
+Uses the same formula from _DEG_to_RAD()_ to convert the given radians to degrees.
 
 ### angulo 
 
@@ -136,8 +136,8 @@ double angulo(Point p) {
 }
 
 ```
-**Entrada:** Un punto _p_.
+**Input:** A point _p_.
 
-**Retorno:** Un valor flotante que representa el ángulo de rotación de _p_ expresado en grados.
+**Output:** A double value that represents the angle of rotation of _p_ expressed in degrees.
 
-Obtiene el ángulo de rotación del punto en radianes y hace el ajuste correspondiente dependiento de los valores de _x_ y _y_ de _p_. Usa la función _ANG_ para convertir los radianes obtenidos a grados.
+Gets the angle of rotation of _p_ in radians and adjusts it depending on its _x_ and _y_ coordinates. Uses the function _ANG()_ to convert the resulting radians to degrees.
