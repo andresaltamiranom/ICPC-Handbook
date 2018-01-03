@@ -1,10 +1,32 @@
+# Triangle
+
+## Struct Triangle
+
+```cpp
+
 struct Triangle {
 	Point A, B, C;
 	Triangle() {}
 	Triangle(Point A, Point B, Point C) : A(A), B(B), C(C) {}
 };
 
+```
+
+### Perimeter
+
+```cpp
+
 double perimeter(double a, double b, double c) { return a+b+c; }
+
+```
+
+**Input:** The lengths of the three sides of the triangle.
+
+**Output:** A double value, the perimeter of the triangle.
+
+Calculates the perimeter of a triangle.
+
+### Area
 
 // Heron's formula
 double area(double a, double b, double c){
