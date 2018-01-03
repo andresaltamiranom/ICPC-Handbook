@@ -1,29 +1,28 @@
-Un _segment tree_ es una estructura de datos que permite dos operaciones:
-1) Procesar una consulta dentro de un rango
-2) Actualizar un valor del arreglo que lo compone.
+A _segment tree_ is a data structure that allows two types of operations:
+1) Process a query within a range.
+2) Update a value in the list that makes up the tree.
 
-Los _segment trees_ pueden soportar consultas de suma, consultas de mínimos y máximos y otras operaciones de tipo asociativas. Generalmente estas operaciones corren en tiempo O(log(n)).
+Segment trees support queries that involve sums, minimums, maximums, and other associative operations. These operations run on O(log(n)) time.
 
-Para construir un _segment tree_, asumimos que el tamaño del arreglo es una potencia de dos y se usa la indexación basada en cero, ya que es más conveniente construir un árbol de segmentos para dicho arreglo. Si el tamaño del arreglo no es una potencia de dos, se le pueden añadir valores “dummy” para que el tamaño sea una potencia de 2.
+To construct a segment tree, we assume that the size of the list that makes it up is a power of two and we use zero-based indexing, since it is more convenient to build a segment tree from a list with those characteristics. If the size of our list is not a power of two, we can add dummy values at the end to make its size a power of two.
 
-**Ejemplo**
+**Example**
 
-Para el siguiente arreglo, se muestra su _segment tree_ de sumas correspondiente.
+For the next array, its corresponding segment tree of sums is shown.
 
 ![alt text](https://i.imgur.com/jJgV7Cd.png)
 
-En el árbol, cada nodo corresponde a la suma de los valores de sus hijos, izquierdo y derecho.
-Las ventajas de acomodar la información en esta estructura es que las consultas sobre un rango toman menos tiempo. Si hiciéramos una consulta de la suma de los valores del índice 2 al índice 7, esto implicaría revisar 6 celdas si se hiciera sobre el arreglo.
+In this tree, each node corresponds to the sum of its left and right children. The main advantage of placing our values in this data structure is that it allows queries over a range of these values to finish in a shorter time. If we ran a query of the sums of the values from the index 2 to index 7, we would have to check 6 places if we ran it over the array.
 
 ![alt text](https://i.imgur.com/Jvra9sw.png)
 
-En cambio, si utilizamos un segment tree, solamente revisamos los nodos que cubren esta suma.
+Instead, if we use a segment tree, we only have to check the nodes that cover this range.
 
 ![alt text](https://i.imgur.com/7OZb7XW.png)
 
-Esto reduce el tiempo de la consulta de O(n) a O(log(n)).
+This reduces query times from O(n) to O(log(n)).
 
-La siguiente es una implementación de un _segment tree_ utilizando un vector de enteros como su arreglo.
+Following is an implementation of a segment tree using a vector of integers.
 
 ```cpp
 
@@ -51,30 +50,63 @@ struct SegmentTree {
 };
 ```
 
-A continuación se explica cada una de las funciones.
+Following is an explanation for each of the functions.
 
 ### SegmentTree
 
-**Entrada:** Lista de valores enteros.
+```cpp
+SegmentTree(vi &values) {
+  N = values.size();
+  t.assign(N<<1, 0);
+  for(int i = 0; i < N; i++) t[i+N] = values[i];
+  for(int i = N-1; i; --i) t[i] = combine(t[i<<1], t[i<<1|1]);
+}
+```
+**Input:** List of integers.
 
-**Salida:** Ninguna.
+**Output:** None.
 
-Constructor del _segment tree_. Inicializa el valor de _N_ con el tamaño de la lista, luego separa el doble de este valor de casillas para el vector de enteros _t_, y le asigna el valor 0 a cada una.
+Segment tree's constructor. Initializes the value of _N_ with the size of the list, then reserves double of this value (N<<1) for the vector _t_, and assigns a value of 0 to each space.
 
 ### combine
 
-**Entrada:** Dos valores enteros.
+```cpp
+int combine(int a, int b) { return a+b; }
+```
+**Input:** Two integers.
 
-**Salida:** La suma de los dos valores recibidos como entrada.
+**Output:** The sum of the two integers received as parameters.
 
-La idea es que esta función reciba el valor de dos nodos del árbol cuya suma represente la suma de un rango de la lista de números que forman el árbol.
+The idea is that this functions receives the value of two nodes whose value each represents the value of a range in the list that make up the tree.
 
 ### set
 
-**Entrada:** Dos valores enteros, uno representando un índice y otro un valor para este índice.
+```cpp
+void set(int index, int value) {
+  t[index+N] = value;
+  for(int i = (index+N)>>1; i; i >>= 1) t[i] = combine(t[i<<1], t[i<<1|1]);
+}
+```
+**Input:** Two integers, one representing the index and the other the value to store in this index.
 
-**Salida:** Ninguna.
+**Output:** None.
 
-
+Sets the value at _index_ + _N_ to _value_. The right half of _t_ stores the real values in the list (the leaves), while the left half of _t_ stores the upper nodes, this is why we add _N_ to the index updated. After updating the actual value, all of its ancestors are updated to reflect the new value. (t[i<<1] and t[i<<1|1] represent the left and right children of a node, respectively.)
 
 ### query
+
+```cpp
+int query(int from, int to) {
+  int ansL = 0, ansR = 0;
+  for(int l = N+from, r = N+to; l<r; l >>= 1, r >>= 1) {
+    if (l&1) ansL = combine(ansL, t[l++]);
+    if (r&1) ansR = combine(ansR, t[--r]);
+  }
+  return combine(ansL, ansR);
+}
+```
+**Input:** Two integers representing a range.
+
+**Output:** An integer value holding the result of the query.
+
+Looks for the left-side and right-side nodes which cover the range queried and returns its sum. The _for_ loop starts from the value _N_ + _from_ and _N_ + _to_ because it starts looking from the leaves of the tree and then goes up (by doing l >>= 1 and r >>= 1 each iteration). If _l_ or _r_ is odd, this means we have found the node that represents its corresponding side. After the loop ends, _ansL_ and _ansR_ will store the value representing their own side, so now we just return the call to _combine()_ with these two values.
