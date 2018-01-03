@@ -1,3 +1,9 @@
+# Line
+
+## Struct Line
+
+```cpp
+
 struct Line {
 	double a, b, c;
 	Line() : a(0), b(0), c(0) {}
@@ -12,11 +18,43 @@ struct Line {
 	}
 };
 
+```
+
+## areParallel
+
+```cpp
+
 bool areParallel(Line l1, Line l2) {
-	return (abs(l1.a-l2.a) < EPS) && (abs(l1.b-l2.b) < EPS); }
+	return (abs(l1.a-l2.a) < EPS) && (abs(l1.b-l2.b) < EPS);
+}
+
+```
+
+**Input:** Two Lines.
+
+**Output:** A boolean, whether the two lines are parallel or not.
+
+//TODO
+
+### areSame
+
+```cpp
 
 bool areSame(Line l1, Line l2) {
-	return areParallel(l1, l2) && (abs(l1.c-l2.c) < EPS); }
+	return areParallel(l1, l2) && (abs(l1.c-l2.c) < EPS);
+}
+
+```
+
+**Input:** Two Lines.
+
+**Output:** A boolean, whether the two lines are the same line or not.
+
+//TODO
+
+### areIntersect
+
+```cpp
 
 bool areIntersect(Line l1, Line l2, Point &p) {
 	if (areParallel(l1, l2)) return false;
@@ -25,6 +63,18 @@ bool areIntersect(Line l1, Line l2, Point &p) {
 	else                 p.y = -(l2.a * p.x + l2.c);
 	return true;
 }
+
+```
+
+**Input:** Two Lines and a Point passed by reference.
+
+**Output:** A boolean, whether the two lines intersect or not. If they intersect, the point _p_ will contain the point of the intersection.
+
+//TODO
+
+### lineSegIntersect
+
+```cpp
 
 // Interseccion de AB con CD
 // * WARNING: Does not work for collinear line segments!
@@ -37,13 +87,37 @@ bool lineSegIntersect(Point a, Point b, Point c, Point d) {
 	return (vcrossu1 * vcrossu2 <= 0);
 }
 
-// Calcula la distancia de un punto P a una recta AB, y guarda en C la inters
+```
+
+**Input:** Four points representing two line segments.
+
+**Output:** A boolean, whether the two line segments intersect or not.
+
+//TODO
+
+### distToLine
+
+```cpp
+
+// Calcula la distancia de un punto P a una recta AB, y guarda en C la interseccion
 double distToLine(Point p, Point a, Point b, Point &c) {
 	Vec ap = toVec(a, p), ab = toVec(a, b);
 	double u = dot(ap, ab) / norm_sq(ab);
 	c = translate(a, scale(ab, u));
 	return dist(p, c);
 }
+
+```
+
+**Input:** Four points. The second and third points represent a line. The fourth point is passed by reference.
+
+**Output:** A double value, the distance from point _p_ to the line _AB_.
+
+//TODO
+
+### distToLineSegment
+
+```cpp
 
 // Distancia a de P a segmento AB
 double distToLineSegment(Point p, Point a, Point b, Point &c) {
@@ -53,3 +127,11 @@ double distToLineSegment(Point p, Point a, Point b, Point &c) {
 	if (u > 1.0) { c = b; return dist(p, b); }
 	return distToLine(p, a, b, c);
 }
+
+```
+
+**Input:** Four points. The second and third points represent a line segment. The fourth point is passed by reference.
+
+**Output:** A double value, the distance from point _p_ to the line segment _AB_.
+
+//TODO
