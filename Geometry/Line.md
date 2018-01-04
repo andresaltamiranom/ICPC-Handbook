@@ -1,5 +1,7 @@
 # Line
 
+We represent a line using the formula _ax+by+c=0_.
+
 ## Struct Line
 
 ```cpp
@@ -18,7 +20,7 @@ struct Line {
 	}
 };
 
-```
+``` 
 
 ## areParallel
 
@@ -34,7 +36,7 @@ bool areParallel(Line l1, Line l2) {
 
 **Output:** A boolean, whether the two lines are parallel or not.
 
-//TODO
+Checks if two given lines are parallel. Two lines are parallel if they have the same x and y intercepts.
 
 ### areSame
 
@@ -50,7 +52,7 @@ bool areSame(Line l1, Line l2) {
 
 **Output:** A boolean, whether the two lines are the same line or not.
 
-//TODO
+Checks if two lines are the same line. The two lines are the same if their three values are equal. This function leverages from the _areParallel()_ function.
 
 ### areIntersect
 
@@ -70,7 +72,7 @@ bool areIntersect(Line l1, Line l2, Point &p) {
 
 **Output:** A boolean, whether the two lines intersect or not. If they intersect, the point _p_ will contain the point of the intersection.
 
-//TODO
+Checks if two lines intersect each other. There are three possibilities of intersections with lines: if they are the same line, they have an infinitude of points in common; if they are different lines but have the same slope, they are parallel and have no point of intersection; otherwise they have a single point of intersection. To find the point of intersection, //TODO
 
 ### lineSegIntersect
 
