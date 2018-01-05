@@ -1,6 +1,7 @@
 # Line
 
-We represent a line using the formula _ax+by+c=0_.
+A line is represented by the formula _ax+by+c=0_.
+It's important to distinguish the difference between a line and a line segment. A line goes on infinitely, while a line segment has a start and an end point.
 
 ## Struct Line
 
@@ -70,16 +71,26 @@ bool areIntersect(Line l1, Line l2, Point &p) {
 
 **Input:** Two Lines and a Point passed by reference.
 
-**Output:** A boolean, whether the two lines intersect or not. If they intersect, the point _p_ will contain the point of the intersection.
+**Output:** A boolean, whether the two lines intersect or not. If they intersect, _p_ will contain the point of the intersection.
 
-Checks if two lines intersect each other. There are three possibilities of intersections with lines: if they are the same line, they have an infinitude of points in common; if they are different lines but have the same slope, they are parallel and have no point of intersection; otherwise they have a single point of intersection. To find the point of intersection, //TODO
+Checks if two lines intersect each other. There are three possibilities of intersections with lines: if they are the same line, they have an infinitude of points in common; if they are different lines but have the same slope, they are parallel and have no point of intersection; otherwise they have a single point of intersection. We know that the intersection point has to satisfy both line equations so, in order to find its coordinates, we solve them simultaneously:
+
+	l1.a\*x + l1.b\*y + l1.c = 0 (multiply by l2.b)
+	l2.a\*x + l2.b\*y + l2.c = 0 (multiply by l1.b)
+	
+	l1.a\*l2.b\*x + l1.b\*l2.b\*y + l1.c\*l2.b = 0 (-) (substract the second one from the first one)
+	l2.a\*l1.b\*x + l1.b\*l2.b\*y + l1.b\*l2.c = 0
+	
+	(l1.a\*l2.b - l2.a\*l1.b)*x + l1.c\*l2.b - l1.b\*l2.c = 0
+	
+	x = (l1.b\*l2.c - l1.c\*l2.b) / (l1.a\*l2.b - l2.a\*l1.b)
+	
+To find _y_, we then just replace _x_ with the value obtained and solve for _y_.
 
 ### lineSegIntersect
 
 ```cpp
 
-// Interseccion de AB con CD
-// * WARNING: Does not work for collinear line segments!
 bool lineSegIntersect(Point a, Point b, Point c, Point d) {
 	double ucrossv1 = cross(toVec(a, b), toVec(a, c));
 	double ucrossv2 = cross(toVec(a, b), toVec(a, d));
@@ -91,11 +102,15 @@ bool lineSegIntersect(Point a, Point b, Point c, Point d) {
 
 ```
 
-**Input:** Four points representing two line segments.
+**Input:** Four points representing two line segments (AB and CD).
 
 **Output:** A boolean, whether the two line segments intersect or not.
 
-//TODO
+Checks if two line segments intersect each other, given the points for each line segment.
+We calculate the cross product of AB-AC and of AB-AD. If both of them yield a positive result (none of them is zero), then they  //TODO
+
+
+Note: This function does not work for collinear line segments (line segments lying on the same straight line).
 
 ### distToLine
 
@@ -111,11 +126,11 @@ double distToLine(Point p, Point a, Point b, Point &c) {
 
 ```
 
-**Input:** Four points. The second and third points represent a line. The fourth point is passed by reference.
+**Input:** Four points. The first point is a single point. The second and third points represent a line. The fourth point is passed by reference.
 
-**Output:** A double value, the distance from point _p_ to the line _AB_.
+**Output:** A double value, the distance from point _p_ to the line.
 
-//TODO
+Calculates the distance from point _p_ to the line and stores the intersection in _c_. //TODO
 
 ### distToLineSegment
 
@@ -132,8 +147,8 @@ double distToLineSegment(Point p, Point a, Point b, Point &c) {
 
 ```
 
-**Input:** Four points. The second and third points represent a line segment. The fourth point is passed by reference.
+**Input:** Four points. The first point is a single point. The second and third points represent a line segment. The fourth point is passed by reference.
 
 **Output:** A double value, the distance from point _p_ to the line segment _AB_.
 
-//TODO
+Calculates the distance from point _p_ to the line segment _AB_ and stores the intersection in _c_. //TODO
