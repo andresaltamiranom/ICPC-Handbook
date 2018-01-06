@@ -76,15 +76,15 @@ bool areIntersect(Line l1, Line l2, Point &p) {
 
 Checks if two lines intersect each other. There are three possibilities of intersections with lines: if they are the same line, they have an infinitude of points in common; if they are different lines but have the same slope, they are parallel and have no point of intersection; otherwise they have a single point of intersection. We know that the intersection point has to satisfy both line equations so, in order to find its coordinates, we solve them simultaneously:
 
-	l1.a\*x + l1.b\*y + l1.c = 0 (multiply by l2.b)
-	l2.a\*x + l2.b\*y + l2.c = 0 (multiply by l1.b)
+	l1.a*x + l1.b*y + l1.c = 0 (multiply by l2.b)
+	l2.a*x + l2.b*y + l2.c = 0 (multiply by l1.b)
 	
-	l1.a\*l2.b\*x + l1.b\*l2.b\*y + l1.c\*l2.b = 0 (-) (substract the second one from the first one)
-	l2.a\*l1.b\*x + l1.b\*l2.b\*y + l1.b\*l2.c = 0
+	l1.a*l2.b*x + l1.b*l2.b*y + l1.c*l2.b = 0 (-) (substract the second one from the first one)
+	l2.a*l1.b*x + l1.b*l2.b*y + l1.b*l2.c = 0
 	
-	(l1.a\*l2.b - l2.a\*l1.b)*x + l1.c\*l2.b - l1.b\*l2.c = 0
+	(l1.a*l2.b - l2.a*l1.b)*x + l1.c*l2.b - l1.b*l2.c = 0
 	
-	x = (l1.b\*l2.c - l1.c\*l2.b) / (l1.a\*l2.b - l2.a\*l1.b)
+	x = (l1.b*l2.c - l1.c*l2.b) / (l1.a*l2.b - l2.a*l1.b)
 	
 To find _y_, we just replace _x_ with the value obtained and solve for _y_.
 
@@ -114,6 +114,7 @@ For this problem, it is important to understand **orientation**. Orientation of 
 ![alt text](https://www.geeksforgeeks.org/wp-content/uploads/orientation11.png)
 
 Two lines intersect only if both of the following conditions are satisfied:
+
 	– Points A-B-C and A-B-D have different orientations
 	– Points C-D-A and C-D-B have different orientations
 	
@@ -121,7 +122,7 @@ We also know that if the magnitude of the cross product of two vectors is positi
 
 Knowing all this information, then we just have to check that the cross product of A-B-C and A-B-D have different orientations and that the cross product of C-D-A and C-D-B have different orientations. These have different orientations if their product is greater than zero because only two positives or two negatives produce this result.
 
-Note: This function does not work for collinear line segments.
+**Note:** This function does not work for collinear line segments.
 
 ### distToLine
 
