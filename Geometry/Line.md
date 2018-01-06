@@ -1,6 +1,7 @@
 # Line
 
 A line is represented by the formula _ax+by+c=0_.
+
 It's important to distinguish the difference between a line and a line segment. A line goes on infinitely, while a line segment has a start and an end point.
 
 ## Struct Line
@@ -85,7 +86,7 @@ Checks if two lines intersect each other. There are three possibilities of inter
 	
 	x = (l1.b\*l2.c - l1.c\*l2.b) / (l1.a\*l2.b - l2.a\*l1.b)
 	
-To find _y_, we then just replace _x_ with the value obtained and solve for _y_.
+To find _y_, we just replace _x_ with the value obtained and solve for _y_.
 
 ### lineSegIntersect
 
@@ -107,16 +108,25 @@ bool lineSegIntersect(Point a, Point b, Point c, Point d) {
 **Output:** A boolean, whether the two line segments intersect or not.
 
 Checks if two line segments intersect each other, given the points for each line segment.
-We calculate the cross product of AB-AC and of AB-AD. If both of them yield a positive result (none of them is zero), then they  //TODO
 
+For this problem, it is important to understand **orientation**. Orientation of an ordered triplet of points in a plane can be counterclockwise, clockwise, or collinear, as in the following image.
 
-Note: This function does not work for collinear line segments (line segments lying on the same straight line).
+![alt text](https://www.geeksforgeeks.org/wp-content/uploads/orientation11.png)
+
+Two lines intersect only if both of the following conditions are satisfied:
+	– Points A-B-C and A-B-D have different orientations
+	– Points C-D-A and C-D-B have different orientations
+	
+We also know that if the magnitude of the cross product of two vectors is positive, it forms a left turn. If it is negative, it forms a right turn. If it is zero, it is collinear.
+
+Knowing all this information, then we just have to check that the cross product of A-B-C and A-B-D have different orientations and that the cross product of C-D-A and C-D-B have different orientations. These have different orientations if their product is greater than zero because only two positives or two negatives produce this result.
+
+Note: This function does not work for collinear line segments.
 
 ### distToLine
 
 ```cpp
 
-// Calcula la distancia de un punto P a una recta AB, y guarda en C la interseccion
 double distToLine(Point p, Point a, Point b, Point &c) {
 	Vec ap = toVec(a, p), ab = toVec(a, b);
 	double u = dot(ap, ab) / norm_sq(ab);
@@ -130,13 +140,12 @@ double distToLine(Point p, Point a, Point b, Point &c) {
 
 **Output:** A double value, the distance from point _p_ to the line.
 
-Calculates the distance from point _p_ to the line and stores the intersection in _c_. //TODO
+Calculates the distance from point _p_ to the line defined by _a_ and _b_ (_a_ and _b_ must be different) and stores the intersection in _c_. To do this, we first compute the location of the point in the line _AB_ that is closest to point _p_ (we'll call this point _c_) and then obtain the Euclidean distance between _p_ and _c_. We can view point _c_ as point _a_ translated by a scaled magnitude _u_ of vector _AB_. To get _u_, we do a scalar projection of vector _AP_ onto vector _AB_ by using dot product. Finally, we return the Euclidean distance between _p_ and _c_.
 
 ### distToLineSegment
 
 ```cpp
 
-// Distancia a de P a segmento AB
 double distToLineSegment(Point p, Point a, Point b, Point &c) {
 	Vec ap = toVec(a, p), ab = toVec(a, b);
 	double u = dot(ap, ab) / norm_sq(ab);
@@ -151,4 +160,4 @@ double distToLineSegment(Point p, Point a, Point b, Point &c) {
 
 **Output:** A double value, the distance from point _p_ to the line segment _AB_.
 
-Calculates the distance from point _p_ to the line segment _AB_ and stores the intersection in _c_. //TODO
+Calculates the distance from point _p_ to the line segment _AB_ and stores the intersection in _c_. If we are given a line segment instead of a line, then the minimum distance from point _p_ to line segment _AB_ must also consider two special cases: the end points _a_ and _b_ of that line segment. We handle these cases by adding the conditions to check if _p_ is closer to _a_ (u < 0.0) or to _b_ (u > 1.0). If neither of these conditions is true, we run the algorithm as with a normal line.
