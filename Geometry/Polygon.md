@@ -153,7 +153,14 @@ bool isSimple(const Polygon &p) {
 
 ```
 
-**Input: **
+**Input:** A Polygon.
 
-**Output: **
+**Output:** A boolean value, whether the given polygon is simple or not.
 
+Checks if a given polygon is a simple polygon. A simple polygon is a flat shape consisting of straight, non-intersecting line segments that are joined pair-wise to form a closed path.
+
+The following image shows the difference between a simple (left) and a non-simple, or self-intersecting, (right) polygon.
+
+![alt text](https://i.imgur.com/2RGZELK.png)
+
+To check if a polygon is simple, //TODO
