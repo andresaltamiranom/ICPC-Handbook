@@ -106,6 +106,54 @@ bool isConvex(const Polygon &P) {
 
 **Output:** A boolean value, whether the polygon _P_ is convex or not.
 
-//TODO
+A polygon is said to be convex if any line segment drawn inside the polygon does not intersect any edge of the polygon. Otherwise, it is a concave polygon.
+
+![alt text](https://i.imgur.com/KjRdGlx.png)
+
+To check if a polygon is convex, we can simply check whether all three consecutive vertices of the polygon from the same turns (all left turns or all right turns). If at least one triple is different, then the polygon is concave.
 
 ### inPolygon
+
+```cpp
+
+bool inPolygon (Point pt, const Polygon &P) {
+	if((int)P.size() == 0) return false;
+	double sum = 0;
+	for (int i = 0; i < (int)P.size()-1; i++) {
+		if (ccw(pt, P[i], P[i+1]))
+			sum += angle(P[i], pt, P[i+1]);
+		else sum -= angle(P[i], pt, P[i+1]); }
+	return abs(abs(sum) - 2*PI) < EPS;
+}
+
+```
+
+**Input:** A Point and a Polygon.
+
+**Output:** A boolean value, whether the given point is inside the polygon.
+
+Checks if a given point is inside a given concave or convex polygon. This function implements the **winding number algorithm**. This algorithm computes the sum of angles between three points: _P[i]_, _pt_, and _P[i+1]_. In this case, P[i] - P[i+1] are consecutive sides of polygon _P_, taking care of left turns (add the angle) and right turns (substract the angle) respectively. If the final sum is 2π (or 360 degrees), then _pt_ is inside polygon _P_.
+
+### isSimple
+
+```cpp
+
+bool isSimple(const Polygon &p) {
+  for (int i = 0; i < p.size(); i++) {
+	for (int k = i+1; k < p.size(); k++) {
+	  int j = (i+1) % p.size();
+	  int l = (k+1) % p.size();
+	  if (i == l || j == k) continue;
+	  if (lineSegIntersect(p[i], p[j], p[k], p[l]))
+		return false;
+	}
+  }
+  return true;
+}
+
+```
+
+**Input: **
+
+**Output: **
+
