@@ -60,4 +60,4 @@ Gets the convex polygon of a given polygon. The convex polygon is the smallest p
 
 https://gurus.pyimagesearch.com/wp-content/uploads/2015/03/contours_convex_hull.jpg
 
-//TODO
+To get the convex polygon, we use //TODO algorithm. First, we create a new Polygon with twice the size of the original, just to make sure the convex Polygon will fit in _H_. Then we sort the points by their x-coordinates. We then loop through each set of points and, by getting its cross product, we get the direction of the turn of the current point and the previous two points. 
