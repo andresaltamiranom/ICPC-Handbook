@@ -12,7 +12,7 @@ The standard way to represent a Polygon is to simply enumerate the vertices of t
 
 ## Helper functions
 
-### cross
+### cross product
 
 ```cpp
 
