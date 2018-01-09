@@ -65,4 +65,4 @@ All Catalan numbers satisfy the following recurrence relations:
 
 ![alt text](https://wikimedia.org/api/rest_v1/media/math/render/svg/79756c79f56fb6c5669408007a9152217e610580)
 
-To get the Nth+1 Catalan number, we just plug in the given formula for _Cn+1_.
+To get the _Nth+1_ Catalan number, we just plug in the given formula for _Cn+1_.
