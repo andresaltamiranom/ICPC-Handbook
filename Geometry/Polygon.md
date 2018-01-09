@@ -112,7 +112,7 @@ A polygon is said to be convex if any line segment drawn inside the polygon does
 
 To check if a polygon is convex, we can simply check whether all three consecutive vertices of the polygon from the same turns (all left turns or all right turns). If at least one triple is different, then the polygon is concave.
 
-### inPolygon
+### Point in Polygon
 
 ```cpp
 
@@ -165,7 +165,7 @@ The following image shows the difference between a simple (left) and a non-simpl
 
 To check if a polygon is simple, we check if there's two line segments that intersect each other, where each line segment is made up of two consecutive points in the polygon. For example, for a polygon with 5 vertices (numbered 0 to 4), we would check for an intersection between the line segment P0-P1 with P2-P3, then P0-P1 with P3-P4, and finally P1-P2 with P3-P4. If there's any intersection, then it's not a simple polygon.
 
-### 
+### Cut polygon
 
 ```cpp
 
@@ -178,8 +178,93 @@ Point lineIntersectSeg(Point p, Point q, Point A, Point B) {
 	return Point((p.x*v + q.x*u) / (u+v), (p.y*v + q.y*u) / (u+v));
 }
 
+Polygon cutPolygon(Point a, Point b, const Polygon &Q) {
+	Polygon P;
+	for (int i = 0; i < (int)Q.size(); i++) {
+		double left1 = cross(toVec(a, b), toVec(a, Q[i+1])), left2 = 0;
+		if (i != (int)Q.size()-1) left2 = cross(toVec(a, b), toVec(a, Q[i+1]));
+		if (left1 > -EPS) P.pb(Q[i]);
+		if (left1 * left2 < -EPS)
+			P.pb(lineIntersectSeg(Q[i], Q[i+1], a, b));
+	}
+	if (!P.empty() && !(P.back() == P.front()))
+		P.pb(P.front());
+	return P;
+}
+
 ```
 
-**Input:** 
+**Input:**  Two points, representing a line segment, and a Polygon.
 
-**Output:** 
+**Output:** A smaller Polygon after the cut was made.
+
+The basic idea is to iterate through the vertices of the original polygon _Q_, one by one. If line _ab_ and polygon vertex _v_ form a left turn (which implies that _v_ is on the left side of the line _ab_), we put _v_ inside the new polygon _P_. Once we find a polygon edge that intersects with the line _ab_, we use that intersection point as part of the new polygon _P_. We then skip the next vertices of _Q_ that are located on the right side of the line _ab_ (since they will not form part of the new polygon). Sooner or later, we will revisit another polygon ede that intersects with line _ab_ again. We continue appending vertices of _Q_ into _P_  because we are now on the left side of line _ab_ again. We stop when we have returned to the starting vertex and return the resulting polygon _P_, making sure that the last point is also the first point.
+
+The function _lineIntersectSeg()_ is used as a helper function to check if a line segment _pq_ intersects with a line _AB_.
+
+### Intersection between two polygons
+
+```cpp
+
+// only works for convex
+bool pointInPolygon(Polygon &p1, Point p) {
+  FOR(i, 0, p1.size() - 1)
+    if (cross(p1[i], p1[i+1], p) >= 0)
+      return false;
+  return true;
+}
+
+// polygons must be convex
+// returns polygon with size < 3 if there is no intersection
+Polygon intersection(Polygon &p1, Polygon &p2) {
+  set<Point> result;
+  FOR(i, 0, p1.size() - 1) {
+    if (pointInPolygon(p2, p1[i]))
+      result.insert(p1[i]);
+    FOR(j, 0, p2.size() - 1) {
+      Line l1 = Line(p1[i], p1[i+1]);
+      Line l2 = Line(p2[j], p2[j+1]);
+      vector<Point> ps1, ps2;
+      ps1.pb(p1[i]); ps1.pb(p1[i+1]);
+      ps2.pb(p2[j]); ps2.pb(p2[j+1]);
+      sort(ps1.begin(), ps1.end());
+      sort(ps2.begin(), ps2.end());
+      if (!areParallel(l1, l2)) {
+        Point intersect;
+        bool b = areIntersect(l1, l2, intersect);
+        if (b && checkPointInSegm(intersect, ps1[0], ps1[1]) && checkPointInSegm(intersect, ps2[0], ps2[1]))
+          result.insert(intersect);          
+      } else if (areSame(l1, l2)) {
+        if (ps1[1] >= ps2[0] && ps2[1] >= ps1[0]) {
+          vector<Point> ps3;
+          ps3.pb(ps1[0]); ps3.pb(ps1[1]); ps3.pb(ps2[0]); ps3.pb(ps2[1]);
+          sort(all(ps3));
+          result.insert(ps3[1]);
+          result.insert(ps3[2]);
+        }
+      }
+    }
+  }
+
+  FOR(i, 0, p2.size() - 1) {
+    if (pointInPolygon(p1, p2[i]))
+      result.insert(p2[i]);
+  }
+
+  if (result.size() <= 2) {
+    return Polygon(result.begin(), result.end());
+  }
+
+  Polygon p(result.begin(), result.end());
+  return convexHull(p);
+}
+
+```
+
+**Input:** Two polygons.
+
+**Output:** A polygon outlining the intersection of the two original polygons.
+
+Given two polygons, returns the resulting polygon of the intersection between the two original polygons. If there is no intersection, returns a polygon with size < 3. //TODO 
+
+Here we use a different helper function _pointInPolygon()_ to find a point in a polygon. This function runs faster than the other function defined to find a point inside a polygon, but it only works for convex polygons, whereas the other function works for both convex and concave polygons. We can safely use this function since our function _intersection()_ only accepts convex polygons as input.
