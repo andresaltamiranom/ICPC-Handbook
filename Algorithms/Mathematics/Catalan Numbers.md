@@ -59,10 +59,10 @@ int nextCatalan(int n, int previous) {
 
 **Input:** The index of the Catalan number previous to the one we want to obtain (we have the _Nth_, and want to obtain _(N+1)th_), and the value of the Catalan number at index _N_. 
 
-**Output:** The (N+1)th Catalan number.
+**Output:** The _(N+1)th_ Catalan number.
 
-All Catalan numbers follow satisfy the following recurrence relations:
+All Catalan numbers satisfy the following recurrence relations:
 
 ![alt text](https://wikimedia.org/api/rest_v1/media/math/render/svg/79756c79f56fb6c5669408007a9152217e610580)
 
-To get the Nth+1 Catalan number, we just plug in the given formula.
+To get the Nth+1 Catalan number, we just plug in the given formula for _Cn+1_.
