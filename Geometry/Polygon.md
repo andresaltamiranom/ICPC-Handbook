@@ -214,8 +214,6 @@ bool pointInPolygon(Polygon &p1, Point p) {
   return true;
 }
 
-// polygons must be convex
-// returns polygon with size < 3 if there is no intersection
 Polygon intersection(Polygon &p1, Polygon &p2) {
   set<Point> result;
   FOR(i, 0, p1.size() - 1) {
@@ -261,10 +259,14 @@ Polygon intersection(Polygon &p1, Polygon &p2) {
 
 ```
 
-**Input:** Two polygons.
+**Input:** Two polygons. (**Note:** Polygons must be convex.)
 
 **Output:** A polygon outlining the intersection of the two original polygons.
 
-Given two polygons, returns the resulting polygon of the intersection between the two original polygons. If there is no intersection, returns a polygon with size < 3. //TODO 
+Given two polygons, returns the resulting polygon of the intersection between the two original polygons. If there is no intersection, returns a polygon with size < 3.
 
-Here we use a different helper function _pointInPolygon()_ to find a point in a polygon. This function runs faster than the other function defined to find a point inside a polygon, but it only works for convex polygons, whereas the other function works for both convex and concave polygons. We can safely use this function since our function _intersection()_ only accepts convex polygons as input.
+To solve this problem we will create a _set_ that will contain all the points that will be in the final polygon. We iterate over every point in the first polygon. If a point of the first polygon is inside the second polygon, then this point will be included in _result_, as we are sure that it is part of the resulting polygon. (**NOTE:** The points in _result_ are not necessarily the points that will outline the resulting polygon. These points could be **inside** the resulting polygon, which is why we find the convex hull of the resulting polygon at the last line of the function). Inside our first _for_ that iterates over _p1_, we do another _for_ loop to iterate over every of the second polygon's points. We will start creating line segments for each consecutive pair of points, both for _p1_ and _p2_, and test whether these line segments intersect. If they intersect in one point (are not parallel), then the point of intersection will be part of _result_. However, if both line segments are the same for both polygons, then only if the rightmost point of _p1_ is greater than the leftmost point of _p2_ and the rightmost point of _p2_ is greater than the leftmost point of _p1_ will there be an overlap, and thus we should include this in _result_. In this case, the points we want for the intersecting polygon are the leftmost point of _p2_ and the rightmost point of _p1_, since they are the points closer together (and thus enclosing the resulting polygon). We repeat this until all points inside or on the edge of the resulting polygon have been found for _p1_ on _p2_. Afterwards, we repeat the process of _pointInPolygon()_, but this time checking if any point that makes up _p2_ is inside _p1_, and adding them to _result_ if they are.
+
+Finally we create a polygon with all the points found inside the intersecting polygon and return the convex hull of these points.
+
+Note that here we use a different helper function, _pointInPolygon()_, to find a point in a polygon. This function runs faster than the other function defined to find a point inside a polygon, but it only works for convex polygons, whereas the other function works for both convex and concave polygons. We can safely use this function since our function _intersection()_ only accepts convex polygons as input.
