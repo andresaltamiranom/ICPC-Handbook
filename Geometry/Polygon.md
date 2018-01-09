@@ -163,4 +163,23 @@ The following image shows the difference between a simple (left) and a non-simpl
 
 ![alt text](https://i.imgur.com/2RGZELK.png)
 
-To check if a polygon is simple, //TODO
+To check if a polygon is simple, we check if there's two line segments that intersect each other, where each line segment is made up of two consecutive points in the polygon. For example, for a polygon with 5 vertices (numbered 0 to 4), we would check for an intersection between the line segment P0-P1 with P2-P3, then P0-P1 with P3-P4, and finally P1-P2 with P3-P4. If there's any intersection, then it's not a simple polygon.
+
+### 
+
+```cpp
+
+Point lineIntersectSeg(Point p, Point q, Point A, Point B) {
+	double a = B.y - A.y;
+	double b = A.x - B.x;
+	double c = B.x*A.y - A.x*B.y;
+	double u = abs(a*p.x + b*p.y + c);
+	double v = abs(a*q.x + b*q.y + c);
+	return Point((p.x*v + q.x*u) / (u+v), (p.y*v + q.y*u) / (u+v));
+}
+
+```
+
+**Input:** 
+
+**Output:** 
