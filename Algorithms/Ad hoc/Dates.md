@@ -12,7 +12,7 @@ int toJulian(int day, int month, int year) {
 
 ```
 
-**Input:** Three integers. A day, a month, and a year.
+**Input:** Three integers. A day, month, and year.
 
 **Output:** An integer, the Julian date represented by the given day, month, and year.
 
