@@ -57,7 +57,7 @@ int nextCatalan(int n, int previous) {
 
 ```
 
-**Input:** The index of the Catalan number we want to obtain (_N+1_), and the value of the Catalan number at index _n-1_. 
+**Input:** The index of the Catalan number previous to the one we want to obtain (we have the _Nth_, and want to obtain _(N+1)th_), and the value of the Catalan number at index _N_. 
 
 **Output:** The (N+1)th Catalan number.
 
