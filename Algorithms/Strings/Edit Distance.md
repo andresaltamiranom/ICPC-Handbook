@@ -37,5 +37,7 @@ int editDistance(string A, string B) {
 **Output:** An integer, the edit distance from _A_ to _B_.
 
 We solve this problem using dynamic programming. We initialize a matrix with the amount of rows equal to the length of the first string, and the amount of columns equal to the length of the second string. We initialize the matrix by numbering the first row from 0 to _n_, and the first column from 0 to _m_. After this, we will loop through and fill the matrix. At each cell, there are two possibilities:
-- The current letter in _A_ is the same as the current letter in _B_. In this case, _dist[i][j]_ = _dist[i-1][j-1]_, since there was no cost at this step.
-- The current letter in _A_ is different as the current letter in _B_. In this case, we can either, add, delete, or subsitute a letter. We will choose the _minimum_ among these options. The cost of substituting is _dist[i-1][j-1] + 1_. The cost of adding a letter is ////////////// _dist[i-1][j] + 1_, and the cost of removing a letter is _dist[i][j-1] + 1_.
+- The current letter in _A_ is the same as the current letter in _B_. In this case, _dist\[i]\[j]_ = _dist\[i-1]\[j-1]_, since there was no cost at this step.
+- The current letter in _A_ is different as the current letter in _B_. In this case, we can either, add, delete, or subsitute a letter in _A_ to get closer to _B_. We will choose the _minimum_ among these options. The cost of substituting is _dist\[i-1]\[j-1] + 1_. The cost of adding a letter is _dist\[i]\[j-1] + 1_, and the cost of removing a letter is _dist\[i-1]\[j] + 1_.
+
+The result will be the value on the lowest and rightmost cell, so we return this value.
