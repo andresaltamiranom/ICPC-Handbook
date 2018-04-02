@@ -1,3 +1,5 @@
+# Segment Trees
+
 A _segment tree_ is a data structure that allows two types of operations:
 1) Process a query within a range.
 2) Update a value in the list that makes up the tree.
