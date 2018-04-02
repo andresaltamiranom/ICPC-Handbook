@@ -98,8 +98,8 @@ SuffixArray(char *S, int N) : N(N) {
 
 ```
 
-**Input:** List of integers.
+**Input:** A string with a terminating symbol and its size.
 
 **Output:** None.
 
-Segment tree's constructor. Initializes the value of _N_ with the size of the list, then reserves double of this value (N<<1) for the vector _t_, and assigns a value of 0 to each space.
+Suffix Array's constructor. //TODO
