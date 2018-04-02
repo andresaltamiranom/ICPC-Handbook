@@ -11,7 +11,7 @@ smallest character.
 
 As we can see in the following figure, the leaves of a _suffix tree_ (from left to right) is in _suffix array_ order. In short, a vertex in _suffix tree_ corresponds to a range in _suffix array_.
 
-![alt text](https://imgur.com/3NDD2FD)
+![alt text](https://i.imgur.com/3NDD2FD.png)
 
 Following is an implementation of a suffix array.
 
