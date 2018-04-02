@@ -79,22 +79,22 @@ Following is an explanation for each of its functions.
 ```cpp
 
 SuffixArray(char *S, int N) : N(N) {
-		sa.assign(N, 0);
-		FOR(i, 0, N) sa[i] = i;
-		vi freq(Q, 0);
-		int index[Q], rank[N], k = 0;
-		FOR(i, 0, N) freq[S[i]]++;
-		FOR(i, 0, Q) index[i] = k, k += freq[i];
-		FOR(i, 0, N) rank[i] = index[S[i]];
-		for(int len = 2; len <= N*2; len <<= 1) {
-			vii val;
-			FOR(i, 0, N) val.eb(rank[i], (i + len/2 >= N) ? 0 : rank[i + len/2]);
-			vi order = csort(val);
-			FOR(i, 0, N) rank[order[i]] = i && val[order[i]] == val[order[i-1]] ? rank[order[i-1]] : i;
-		}
-		FOR(i, 0, N) sa[rank[i]] = i;
-		buildLCP(S);
-	}
+  sa.assign(N, 0);
+  FOR(i, 0, N) sa[i] = i;
+  vi freq(Q, 0);
+  int index[Q], rank[N], k = 0;
+  FOR(i, 0, N) freq[S[i]]++;
+  FOR(i, 0, Q) index[i] = k, k += freq[i];
+  FOR(i, 0, N) rank[i] = index[S[i]];
+  for(int len = 2; len <= N*2; len <<= 1) {
+    vii val;
+    FOR(i, 0, N) val.eb(rank[i], (i + len/2 >= N) ? 0 : rank[i + len/2]);
+    vi order = csort(val);
+    FOR(i, 0, N) rank[order[i]] = i && val[order[i]] == val[order[i-1]] ? rank[order[i-1]] : i;
+  }
+  FOR(i, 0, N) sa[rank[i]] = i;
+  buildLCP(S);
+}
 
 ```
 
