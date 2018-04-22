@@ -15,14 +15,19 @@ We will construct a tree where each node has two values: _s_ and _z_. _S_ denote
 
 ![lazy segment tree](https://i.imgur.com/aYJsNte.png)
 
-When the elements in [a, b] are increased by _u_, we walk from the root towards the leaves and modify the nodes of the tree as follows: If the range [x, y] of a node is completely inside [a, b], we increase the _z_ value of the node by _u_ and stop. If
-[x, y] only partially belongs to [a,b], we increase the _s_ value of the node by _hu_, where _h_ is the size of the intersection of [a,b] and [x, y], and continue our walk recursively in the tree. For example, the following picture shows the tree after increasing the elements in [a,b] by 2:
+When the elements in [a, b] are increased by a value _u_, we walk from the root towards the leaves and modify the nodes of the tree as follows:
+- If the range [x, y] of a node is completely inside [a, b], we increase the _z_ value of the node by _u_ and stop.
+- If [x, y] only partially belongs to [a, b], we increase the _s_ value of the node by _h_\*_u_, where _h_ is the size of the intersection of [a, b] and [x, y], and continue our walk recursively in the tree.
+
+For example, the following picture shows the tree after increasing the elements in [a, b] by 2:
 
 ![lazy segment tree](https://i.imgur.com/K7CHGz0.png)
 
-We also calculate the sum of elements in a range [a,b] by walking in the tree from top to bottom. If the range [x, y] of a node completely belongs to [a,b], we add the s value of the node to the sum. Otherwise, we continue the search recursively downwards in the tree.
+We also calculate the sum of elements in a range [a, b] by walking in the tree from top to bottom. If the range [x, y] of a node completely belongs to [a, b], we add the _s_ value of the node to the sum. Otherwise, we continue the search recursively downwards in the tree.
 
-Both in updates and queries, the value of a lazy update is always propagated to the children of the node before processing the node. The idea is that updates will be propagated downwards only when it is necessary, which guarantees that the operations are always efficient. The following picture shows how the tree changes when we calculate the value of suma(a,b). The rectangle shows the nodes whose values change, because a lazy update is propagated downwards.
+Both in updates and queries, the value of a lazy update is always propagated to the children of the node before processing the node. The idea is that updates will be propagated downwards only when it is necessary, which guarantees that the operations are always efficient.
+
+The following picture shows how the tree changes when we calculate the value of sum(a, b). The rectangle shows the nodes whose values change, because a lazy update is propagated downwards.
 
 ![lazy segment tree](https://i.imgur.com/d0N6YB7.png)
 
