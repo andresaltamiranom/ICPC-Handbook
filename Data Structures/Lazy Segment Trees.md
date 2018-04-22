@@ -11,7 +11,10 @@ Let us consider an example where our goal is to construct a segment tree that su
 1) Increasing each value in [a, b] by a constant
 2) Calculating the sum of values in [a, b]
 
-We will construct a tree where each node has two values: _s_ and _z_. _S_ denotes the sum of values in the range, and _z_ denotes the value of a lazy update, which means that all values in the range should be increased by _z_. In the following tree, _z_ is 0 in all nodes, so there are no ongoing lazy updates.
+We will construct a tree where each node has two values: _s_ and _z_.
+_S_ denotes the sum of values in the range, and _z_ denotes the value of a lazy update, which means that all values in the range should be increased by _z_.
+
+In the following tree, _z_ is 0 in all nodes, so there are no ongoing lazy updates.
 
 ![lazy segment tree](https://i.imgur.com/aYJsNte.png)
 
