@@ -8,7 +8,7 @@ Following is an illustration of this problem.
 
 One solution is the Ford Fulkerson’s method. Ford Fulkerson’s method implemented using DFS can run in O(|_f_|E) where _f_ is the max flow value. This is because we can have a graph where every path augmentation only decreases the edge capacity along the path by 1. This is going to be repeated _f_ times. Because DFS runs in O(E) in a flow graph, the overall time complexity is O(|_f_|E). We do not want this unpredictability in programming contests as the author can choose to give a very large |_f_| value.
 
-A better implementation of Ford Fulkerson's method is to use BFS for finding the shortest path in terms of number of layers/hops between source _s_ and sink _t_. This algorithm runs in O(VE^2) as it can be proven that after O(VE) BFS iterations, all augmenting paths will already be exhausted. As BFS runs in O(E) in a flow graph, the overall time complexity is O(VE^2).
+A better implementation of Ford Fulkerson's method is Edmonds Karp method, which uses BFS for finding the shortest path in terms of number of layers/hops between source _s_ and sink _t_. This algorithm runs in O(VE^2) as it can be proven that after O(VE) BFS iterations, all augmenting paths will already be exhausted. As BFS runs in O(E) in a flow graph, the overall time complexity is O(VE^2).
 
 Following is an implementation of Edmonds Karp algorithm.
 
