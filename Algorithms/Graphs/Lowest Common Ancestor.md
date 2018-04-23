@@ -8,7 +8,23 @@ In the following tree, the lowest common ancestor of nodes 5 and 8 is node 2:
 
 ![LCA](https://i.imgur.com/FNccsEV.png)
 
-Following is an implementation of LCA. The constructor receives the constructed graph and the root node of this graph. The _query()_ function receives two nodes and returns the LCA. This solution uses DFS for searching.
+To solve this, we traverse the tree using depth-first search:
+
+![LCA](https://i.imgur.com/APA0dI9.png)
+
+Then we add each node to the array when the depth-first search walks through the node. Hence, a node that has _k_ children appears _k + 1_ times in the array and there are a total of _2n−1_ nodes in the array.
+
+We store two values: the identifier of the node and the depth/height of the node in the tree. The following arrays corresponds to the above tree:
+
+![LCA](https://i.imgur.com/1XUNQAX.png)
+
+Now we can find the lowest common ancestor of nodes _a_ and _b_ by finding the node with the minimum depth between nodes _a_ and _b_ in the array. For example, the lowest common ancestor of nodes 5 and 8 can be found as follows:
+
+![LCA](https://i.imgur.com/2TKCrox.png)
+
+Node 5 is at position 2, node 8 is at position 5, and the node with minimum depth between positions 2 to 5 is node 2 at position 3, whose depth is 2. Thus, the lowest common ancestor of nodes 5 and 8 is node 2. This means that to find the lowest common ancestor of two nodes it suffices to process a range minimum query. Since the array is static, we can process such queries in O(1) time after an O(nlog(n)) time preprocessing.
+
+Following is an implementation of LCA. The constructor receives the constructed graph and the root node of this graph. The _query()_ function receives two nodes and returns the LCA.
 
 ```cpp
 
