@@ -1,27 +1,37 @@
 # Matrices
 
-
+### Definitions
 
 ```cpp
-
 typedef vector<vector<double> > Matrix;
 #define EPS 1E-7
 #define CREATE(R, C) Matrix(R, vector<double>(C));
+```
 
+### Identity
+
+```cpp
 Matrix identity(int n) {
 	Matrix m = CREATE(n, n);
 	FOR(i, 0, n)
 		m[i][i] = 1;
 	return m;
 }
+```
+### Constant multiplication
 
+```cpp
 Matrix multiply(Matrix m, double k) {
 	FOR(i, 0, m.size())
 		FOR(j, 0, m[0].size())
 			m[i][j] *= k;
 	return m;
 }
+```
 
+### Matrix Multiplication
+
+```cpp
 Matrix multiply(Matrix m1, Matrix m2) {
 	Matrix result = CREATE(m1.size(), m2[0].size());
 	if(m1[0].size() != m2.size())
@@ -32,7 +42,11 @@ Matrix multiply(Matrix m1, Matrix m2) {
 				result[i][j] += m1[i][k]*m2[k][j];
 	return result;
 }
+```
 
+###  Matrix Power
+
+```cpp
 Matrix pow(Matrix m, int exp) {
 	if(!exp) return identity(m.size());
 	if(exp == 1) return m;
@@ -44,7 +58,11 @@ Matrix pow(Matrix m, int exp) {
 	}
 	return result;
 }
+```
 
+### Gauss Jordan
+
+```cpp
 //solves AX=B, output: A^-1 in A, X in B, returns det(A)
 double gaussJordan(Matrix &a, Matrix &b) {
 	int n = a.size(), m = b[0].size();
@@ -80,7 +98,11 @@ double gaussJordan(Matrix &a, Matrix &b) {
 	}
 	return det;
 }
+```
 
+### rref
+
+```cpp
 //returns the rank of a
 int rref(Matrix &a) {
 	int n = a.size(), m = a[0].size();
@@ -101,5 +123,4 @@ int rref(Matrix &a) {
 	}
 	return r;
 }
-
 ```
