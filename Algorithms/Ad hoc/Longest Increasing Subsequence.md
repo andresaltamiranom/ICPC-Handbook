@@ -1,8 +1,16 @@
 # Longest Increasing Subsequence
 
-In this problem we are looking to find the length of the longest subsequence in a given array of integers such that all elements of the subsequence are sorted in strictly ascending order.
+In this problem we are looking to find the longest subsequence in a given array of integers such that all elements of the subsequence are sorted in strictly ascending order.
 
-For example, the length of the LIS for [15, 27, 14, 38, 26, 55, 46, 65, 85]  is 6 since the longest increasing subsequence is [15, 27, 38, 55, 65, 85].
+For example, in the following array:
+
+![LIS](https://i.imgur.com/jNfhUgo.png)
+
+the longest increasing subsequence contains 4 elements:
+
+![LIS](https://i.imgur.com/6KiMnsE.png)
+
+Following is an implementation for LIS that runs in O(nlog(n)) time.
 
 ### longestIncreasingSubsequence
 
@@ -30,9 +38,3 @@ vi longestIncreasingSubsequence(vi v) {
 }
 
 ```
-
-**Input:** A list of numbers (in this case, we pass it as a _vector_ of integers.)
-
-**Output:** A list of numbers (in this case, we return a _vector_ of integers, the _LIS_.)
-
-// TODO Explanation
