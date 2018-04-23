@@ -3,8 +3,8 @@
 The Union-Find Disjoint Set (UFDS) is a data structure used to model a collection of _disjoint sets_ with the ability to efficiently determine which set an item belongs to or to test whether two items belong to the same set and to unite two disjoint sets into one larger set. UFDS can be used to solve problems such as finding connected components in an undirected graph.
 
 Two O(log(n)) time operations are supported:
-1) Unite: Joins two sets.
-2) Find: Finds the representative of the set that contains a given element.
+1) **Unite**: Joins two sets.
+2) **Find**: Finds the representative of the set that contains a given element.
 
 In a union-find structure, one element in each set is the representative of the set, and there is a chain from any other element of the set to the representative.
 
