@@ -1,14 +1,20 @@
 # Heavy Light Decomposition
 
-Heavy Light Decomposition (HLD), also called Heavy Path Decomposition, is a technique for decomposing a rooted tree into a set of paths. The importance of decomposing the tree is that each decomposed path will give us asymptotic time bounds for certain problems involving trees. To do this, we divide the rooted tree into vertex-disjoint chains (meaning that no two chains have a node in common) in such a way that to move from any node in the tree to the root node, we will have to change at most log(N) chains. The path from any node to root can be broken into pieces such that each piece belongs only to one chain.
+Heavy Light Decomposition (HLD), also called Heavy Path Decomposition, is a technique for decomposing a rooted tree into a set of paths. The importance of decomposing the tree is that each decomposed path will give us asymptotic time bounds for certain problems involving trees.
 
-Now the path from any node _A_ to any node _B_ can be  broken into two paths: _A_ to _LCA(A, B)_ and _B_ to _LCA(A, B)_. So at this point we only need to worry about paths of the following format: Start at some node and go up the tree because _A_ to _LCA(A, B)_ and _B_ to _LCA(A, B)_ are both such paths.
+The utility of the HLD lies in that problems involving paths between nodes can often be solved more efficiently by skipping over heavy paths rather than considering each edge in the path individually. This is because long paths in trees that are very poorly balanced tend to consist mostly of heavy edges.
 
-Now we know the following:
+To apply HLD, we divide the rooted tree into vertex-disjoint chains (meaning that no two chains have a node in common) in such a way that to move from any node in the tree to the root node, we will have to change at most log(N) chains. The path from any node to root can be broken into pieces such that each piece belongs only to one chain.
+
+Now, the path from any node _A_ to any node _B_ can be  broken into two paths: _A_ to _LCA(A, B)_ and _B_ to _LCA(A, B)_. So at this point we only need to worry about paths of the following format: Start at some node and go up the tree because _A_ to _LCA(A, B)_ and _B_ to _LCA(A, B)_ are both such paths.
+
+So we know the following regarding HLD:
 
 1) We can break the tree into chains such that we will have to change at most log(N) chains to move from any node up the tree to any other node.
 2) Any path can be broken into two paths such that both paths start at some node and move up the tree.
 3) Queries in each chain can be answered with O(log(N)) complexity and there are at most log(N) chains we need to consider per path. So, in the end, we will have a O(log^2(N)) complexity solution to process queries on the tree.
+
+Let's try to solve an example to better understand how HLD is used.
 
 **Example Problem**
 
