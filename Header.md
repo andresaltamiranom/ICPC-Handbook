@@ -1,3 +1,5 @@
+# Header
+
 The following code can be used as a template when starting a new program. This template facilitates and speeds up the coding process by defining macros that are shorter to write and read when creating code.
 
 ```cpp
@@ -21,14 +23,14 @@ typedef vector<ii> vii;
 typedef vector<vi> vvi; 
 ```
 
-Enseguida se describe el propósito de cada uno de estos estatutos.
+Following is the description for each of these statements.
 
 ```cpp
 
 #include <bits/stdc++.h>
 ```
 
-Encabezado que incluye todas las librerías estándares de c++.
+Header that includes all c++ standard libraries.
 
 ```cpp
 
