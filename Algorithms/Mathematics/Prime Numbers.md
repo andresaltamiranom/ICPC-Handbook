@@ -1,3 +1,5 @@
+# Prime Numbers
+
 A number _a_ is a factor (or divisor) of _b_ if _a_ divides _b_ without leaving any residue. For example, the factors of 32 are 1, 2, 4, 8, 16, and 32. A number _n_ (greater than one) is prime if its only divisors are 1 and _n_. For example, the number 7 is prime because its only divisors are 1 and 7.
 
 The following functions are useful when working with problems that involve prime numbers and factors.
