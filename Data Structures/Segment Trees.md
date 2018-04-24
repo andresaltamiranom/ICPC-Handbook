@@ -16,11 +16,11 @@ For the next array, its corresponding segment tree of sums is shown.
 
 In this tree, each node corresponds to the sum of its left and right children. The main advantage of placing our values in this data structure is that it allows queries over a range of these values to finish in a shorter time. If we ran a query of the sums of the values from the index 2 to index 7, we would have to check 6 places if we ran it over the array.
 
-![alt text](https://i.imgur.com/Jvra9sw.png)
+![alt text](https://i.imgur.com/ceLmjDc.png)
 
 Instead, if we use a segment tree, we only have to check the nodes that cover this range.
 
-![alt text](https://i.imgur.com/7OZb7XW.png)
+![alt text](https://i.imgur.com/rryaoBb.png)
 
 This reduces query times from O(n) to O(log(n)).
 
@@ -68,7 +68,7 @@ SegmentTree(vi &values) {
 
 **Output:** None.
 
-Segment tree's constructor. Initializes the value of _N_ with the size of the list, then reserves double of this value (N<<1) for the vector _t_, and assigns a value of 0 to each space.
+Segment tree's constructor. Initializes the value of _N_ with the size of the list, then reserves double of this value (_N_<<1) for the vector _t_, and assigns a value of 0 to each space.
 
 ### combine
 
@@ -111,4 +111,4 @@ int query(int from, int to) {
 
 **Output:** An integer value holding the result of the query.
 
-Looks for the left-side and right-side nodes which cover the range queried and returns its sum. The _for_ loop starts from the value _N_ + _from_ and _N_ + _to_ because it starts looking from the leaves of the tree and then goes up (by doing l >>= 1 and r >>= 1 each iteration). If _l_ or _r_ is odd, this means we have found the node that represents its corresponding side. After the loop ends, _ansL_ and _ansR_ will store the value representing their own side, so now we just return the call to _combine()_ with these two values.
+Looks for the left-side and right-side nodes which cover the range queried and returns its sum. The _for_ loop starts from the value _N_ + _from_ and _N_ + _to_ because it starts looking from the leaves of the tree and then goes up (by doing _l_ >>= 1 and _r_ >>= 1 each iteration). If _l_ or _r_ is odd, this means we have found the node that represents its corresponding side. After the loop ends, _ansL_ and _ansR_ will store the value representing their own side, so now we just return the call to _combine()_ with these two values.
