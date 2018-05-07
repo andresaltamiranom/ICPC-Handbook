@@ -70,14 +70,15 @@ double DEG_to_RAD(double deg) {
 Uses the following formula to convert degrees to radians:
 ![alt text](http://www.radianstodegrees.net/img/degrees-to-radians2.png)
 
-### distance
+### distance 2D
 
-Gets the distance between two points.
+Gets the distance between two points in 2-dimensional space.
 
 ```cpp
 
 double dist(Point p1, Point p2) {
-	return sqrt(pow(p1.x-p2.x, 2) + pow(p1.y-p2.y, 2) + pow(p1.z-p2.z, 2)); }
+	return sqrt(pow(p1.x-p2.x, 2) + pow(p1.y-p2.y, 2);
+}
 	
 ```
 
@@ -88,6 +89,22 @@ double dist(Point p1, Point p2) {
 Uses the following formula to get the distance between two points:
 
 ![alt text](http://www.onlinemath4all.com/images/dbtpformula.png)
+
+### distance 3D
+
+Gets the distance between two points in 3-dimensional space.
+
+```cpp
+
+double dist(Point p1, Point p2) {
+	return sqrt(pow(p1.x-p2.x, 2) + pow(p1.y-p2.y, 2) + pow(p1.z-p2.z, 2));
+}
+	
+```
+
+**Input:** Two Point structs, _p1_ and _p2_.
+
+**Output:** Double value representing the distance between _p1_ and _p2_.
 
 ### rotate
 
