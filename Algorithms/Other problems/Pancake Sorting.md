@@ -2,7 +2,7 @@
 
 ## Problem Description
 
-Pancake Sorting is a classic Computer Science problem, but it is rarely used. This problem can be described as follows: You are given a stack of N pancakes. The pancake at the bottom and at the top of the stack has **index 0** and **index N-1**, respectively. The size of a pancake is given by the pancake's diameter (an integer ∈ [1 .. MAX_D]). All pancakes in the stack have **different** diameters. For example, a stack A of N = 5 pancakes: {3, 8, 7, 6, 10} can be visualized as:
+Pancake Sorting is a classic Computer Science problem, but it is rarely used. This problem can be described as follows: You are given a stack of N pancakes. The pancake at the bottom and at the top of the stack has **index 0** and **index N-1**, respectively. The size of a pancake is given by the pancake's diameter (an integer ∈ [1 .. MAX_D]), where MAX_D is the maximum diameter for a pancake. All pancakes in the stack have **different** diameters. For example, a stack A of N = 5 pancakes: {3, 8, 7, 6, 10} can be visualized as:
 
 // IMAGE
 
