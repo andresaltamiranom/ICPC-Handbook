@@ -10,9 +10,7 @@ the longest increasing subsequence contains 4 elements:
 
 ![LIS](https://i.imgur.com/6KiMnsE.png)
 
-Following is an implementation for LIS that runs in O(nlog(n)) time.
-
-### longestIncreasingSubsequence
+Following is an implementation for LIS that runs in O(n * log(n)) time:
 
 ```cpp
 
