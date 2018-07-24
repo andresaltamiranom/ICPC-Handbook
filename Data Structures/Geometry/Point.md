@@ -124,7 +124,7 @@ Point rotate(Point p, double theta) {
 
 Constructs a new Point struct, passing to the constructor the X and Y coordinates adjusted to the given angle, using the following equation to rotate a point:
 
-![alt text](https://wikimedia.org/api/rest_v1/media/math/render/svg/4e8193cc301ba228063af7ecdf292c2b8c7e76d3)
+![alt text](https://i.imgur.com/ryNN05z.png)
 
 ### ANG
 
