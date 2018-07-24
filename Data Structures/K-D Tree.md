@@ -16,6 +16,19 @@ A 3-dimensional K-D Tree. The first split (the red vertical plane) cuts the root
 
 A typical K-D Tree includes operations for constructing the tree, inserting nodes, removing nodes, balancing, range search, and nearest neighbour search.
 
+Due to the curse of dimensionality, which leads most searches in high dimensional spaces to end up being brute searches, K-D Trees are not suitable for efficiently finding the nearest neighbour in high-dimensional spaces. As a general rule, if the dimensionality is k, the number of points in the data, N, should be N >> 2^k. Otherwise, when K-D Trees are used with high-dimensional data, most of the points in the tree will be evaluated and the efficiency is no better than exhaustive search, and, if a good-enough fast answer is required, approximate nearest-neighbour methods should be used instead.
+
+## Complexity
+
+1) Building a static K-D Tree from n points has the following worst-case complexity:
+-  O(n * log^2(n)) if an O(n * log(n)) sort such as Heapsort or Mergesort is used to find the median at each level of the nascent tree.
+- O(n * log(n)) if an O(n) median of medians algorithm is used to select the median at each level of the nascent tree.
+- O(k * n * log(n)) if n points are presorted in each of k dimensions using an O(n * log(n)) sort such as Heapsort or Mergesort prior to building the K-D Tree.
+2) Inserting a new point into a balanced K-D Tree takes O(log(n)) time.
+3) Removing a point from a balanced K-D Tree takes O(log(n)) time.
+4) Querying an axis-parallel range in a balanced K-D Tree takes O(n^(1 − 1 / k) + m) time, where m is the number of the reported points, and k the dimension of the K-D Tree.
+5) Finding 1 nearest neighbour in a balanced K-D Tree with randomly distributed points takes O(log(n)) time on average.
+
 Following is an implementation of a K-D Tree:
 
 ```cpp
@@ -170,16 +183,3 @@ int main() {
 // --------------------------------------------
 		
 ```
-
-Due to the curse of dimensionality, which leads most searches in high dimensional spaces to end up being brute searches, K-D Trees are not suitable for efficiently finding the nearest neighbour in high-dimensional spaces. As a general rule, if the dimensionality is k, the number of points in the data, N, should be N >> 2^k. Otherwise, when K-D Trees are used with high-dimensional data, most of the points in the tree will be evaluated and the efficiency is no better than exhaustive search, and, if a good-enough fast answer is required, approximate nearest-neighbour methods should be used instead.
-
-## Complexity
-
-1) Building a static K-D Tree from n points has the following worst-case complexity:
--  O(n * log^2(n)) if an O(n * log(n)) sort such as Heapsort or Mergesort is used to find the median at each level of the nascent tree.
-- O(n * log(n)) if an O(n) median of medians algorithm is used to select the median at each level of the nascent tree.
-- O(k * n * log(n)) if n points are presorted in each of k dimensions using an O(n * log(n)) sort such as Heapsort or Mergesort prior to building the K-D Tree.
-2) Inserting a new point into a balanced K-D Tree takes O(log(n)) time.
-3) Removing a point from a balanced K-D Tree takes O(log(n)) time.
-4) Querying an axis-parallel range in a balanced K-D Tree takes O(n^(1 − 1 / k) + m) time, where m is the number of the reported points, and k the dimension of the K-D Tree.
-5) Finding 1 nearest neighbour in a balanced K-D Tree with randomly distributed points takes O(log(n)) time on average.
