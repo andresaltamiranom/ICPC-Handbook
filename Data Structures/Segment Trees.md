@@ -1,7 +1,9 @@
 # Segment Trees
 
 A _segment tree_ is a data structure that allows two types of operations:
+
 1) Process a query within a range.
+
 2) Update a value in the list that makes up the tree.
 
 Segment trees support queries that involve sums, minimums, maximums, and other associative operations. These operations run on O(log(n)) time.
@@ -29,26 +31,26 @@ Following is an implementation of a segment tree using a vector of integers.
 ```cpp
 
 struct SegmentTree {
-  vi t; int N;
-  SegmentTree(vi &values) {
-    N = values.size();
-    t.assign(N<<1, 0);
-    for(int i = 0; i < N; i++) t[i+N] = values[i];
-    for(int i = N-1; i; --i) t[i] = combine(t[i<<1], t[i<<1|1]);
-  }
-  int combine(int a, int b) { return a+b; }
-  void set(int index, int value) {
-    t[index+N] = value;
-    for(int i = (index+N)>>1; i; i >>= 1) t[i] = combine(t[i<<1], t[i<<1|1]);
-  }
-  int query(int from, int to) {
-    int ansL = 0, ansR = 0;
-    for(int l = N+from, r = N+to; l<r; l >>= 1, r >>= 1) {
-      if (l&1) ansL = combine(ansL, t[l++]);
-      if (r&1) ansR = combine(ansR, t[--r]);
-    }
-    return combine(ansL, ansR);
-  }
+	vi t; int N;
+	SegmentTree(vi &values) {
+		N = values.size();
+		t.assign(N<<1, 0);
+		for(int i = 0; i < N; i++) t[i+N] = values[i];
+		for(int i = N-1; i; --i) t[i] = combine(t[i<<1], t[i<<1|1]);
+	}
+	int combine(int a, int b) { return a+b; }
+	void set(int index, int value) {
+		t[index+N] = value;
+		for(int i = (index+N)>>1; i; i >>= 1) t[i] = combine(t[i<<1], t[i<<1|1]);
+	}
+	int query(int from, int to) {
+		int ansL = 0, ansR = 0;
+		for(int l = N+from, r = N+to; l<r; l >>= 1, r >>= 1) {
+			if (l&1) ansL = combine(ansL, t[l++]);
+			if (r&1) ansR = combine(ansR, t[--r]);
+		}
+		return combine(ansL, ansR);
+	}
 };
 ```
 
@@ -58,10 +60,10 @@ Following is an explanation for each of the functions.
 
 ```cpp
 SegmentTree(vi &values) {
-  N = values.size();
-  t.assign(N<<1, 0);
-  for(int i = 0; i < N; i++) t[i+N] = values[i];
-  for(int i = N-1; i; --i) t[i] = combine(t[i<<1], t[i<<1|1]);
+	N = values.size();
+	t.assign(N<<1, 0);
+	for(int i = 0; i < N; i++) t[i+N] = values[i];
+	for(int i = N-1; i; --i) t[i] = combine(t[i<<1], t[i<<1|1]);
 }
 ```
 **Input:** List of integers.
@@ -85,8 +87,8 @@ The idea is that this functions receives the value of two nodes whose value each
 
 ```cpp
 void set(int index, int value) {
-  t[index+N] = value;
-  for(int i = (index+N)>>1; i; i >>= 1) t[i] = combine(t[i<<1], t[i<<1|1]);
+	t[index+N] = value;
+	for(int i = (index+N)>>1; i; i >>= 1) t[i] = combine(t[i<<1], t[i<<1|1]);
 }
 ```
 **Input:** Two integers, one representing the index and the other the value to store in this index.
@@ -99,12 +101,12 @@ Sets the value at _index_ + _N_ to _value_. The right half of _t_ stores the rea
 
 ```cpp
 int query(int from, int to) {
-  int ansL = 0, ansR = 0;
-  for(int l = N+from, r = N+to; l<r; l >>= 1, r >>= 1) {
-    if (l&1) ansL = combine(ansL, t[l++]);
-    if (r&1) ansR = combine(ansR, t[--r]);
-  }
-  return combine(ansL, ansR);
+	int ansL = 0, ansR = 0;
+	for(int l = N+from, r = N+to; l<r; l >>= 1, r >>= 1) {
+		if (l&1) ansL = combine(ansL, t[l++]);
+		if (r&1) ansR = combine(ansR, t[--r]);
+	}
+	return combine(ansL, ansR);
 }
 ```
 **Input:** Two integers representing a range.
