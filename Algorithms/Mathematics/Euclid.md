@@ -89,7 +89,9 @@ int mod_inverse(int a, int n) {
 In modular arithmetic we do not have a division operation. However, we do have modular inverses.
 
 1) The modular inverse of A (mod C) is A^-1
+
 2) (A * A^-1) ≡ 1 (mod C) or equivalently (A * A^-1) mod C = 1
+
 3) Only the numbers coprime to C (numbers that share no prime factors with C) have a modular inverse (mod C)
 
 This is the fastest method for finding the inverse of A (mod C) using Euclid's extended algorithm.
