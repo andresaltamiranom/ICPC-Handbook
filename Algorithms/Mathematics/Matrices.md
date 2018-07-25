@@ -164,6 +164,7 @@ int rref(Matrix &a) {
 A matrix is in reduced-row echelon form if it satisfies the following conditions:
 
 1) It is in row echelon form.
+
 2) Every leading coefficient is 1 and is the only nonzero entry in its column.
 
 Unlike the row echelon form, the reduced-row echelon form of a matrix is unique and does not depend on the algorithm used to compute it. For a given matrix, despite the row echelon form not being unique, all row echelon forms and the reduced-row echelon form have the same number of zero rows and the pivots are located in the same indices.
