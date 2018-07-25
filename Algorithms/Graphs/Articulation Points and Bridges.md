@@ -12,9 +12,9 @@ See the following example:
 
 ![APaB](https://i.imgur.com/1IB8iM3.png)
 
-In these two sample graphs, we run _articulationPointsAndBridges()_ with 0 as the starting node. Suppose in the graph in the left side, the sequence of visitation is 0 (at iteration 0) → 1 (1) → 2 (2) (backtrack to 1) → 4 (3) → 3 (4) (backtrack to 4) → 5 (5). See that these iteration counters are shown correctly in dfs_num. Since there is no back edge in this graph, all dfs_low = dfs_num.
+In these two sample graphs, we run _articulationPointsAndBridges()_ with 0 as the starting node. Suppose in the graph in the left side, the sequence of visitation is 0 (at iteration 0) - 1 (1) - 2 (2) (backtrack to 1) - 4 (3) - 3 (4) (backtrack to 4) - 5 (5). See that these iteration counters are shown correctly in dfs_num. Since there is no back edge in this graph, all dfs_low = dfs_num.
 
-In the graph in the right side, the sequence of visitation is 0 (at iteration 0) → 1 (1) → 2 (2) (backtrack to 1) → 3 (3) (backtrack to 1) → 4 (4) → 5 (5). There is an important back edge that forms a cycle, i.e. edge 5-1 that is part of cycle 1-4-5-1. This causes vertices 1, 4, and 5 to be able to reach vertex 1 (with dfs_num 1). Thus dfs_low of {1, 4, 5} are all 1.
+In the graph in the right side, the sequence of visitation is 0 (at iteration 0) - 1 (1) - 2 (2) (backtrack to 1) - 3 (3) (backtrack to 1) - 4 (4) - 5 (5). There is an important back edge that forms a cycle, i.e. edge 5-1 that is part of cycle 1-4-5-1. This causes vertices 1, 4, and 5 to be able to reach vertex 1 (with dfs_num 1). Thus dfs_low of {1, 4, 5} are all 1.
 
 When we are in a vertex _u_, _v_ is a neighbor of _u_, and dfs_low(_v_) ≥ dfs_num(_u_), then _u_ is an articulation vertex. This is because the fact that dfs_low(_v_) is not smaller than dfs_num(_u_) implies that there is no back edge connected to vertex _v_ that can reach vertex _w_ with a lower dfs_num(_w_) (which further implies that _w_ is the parent of _u_ in the DFS spanning tree). Thus, to reach that parent of _u_ from _v_, one must pass through vertex _u_. This implies that removing the
 vertex _u_ will disconnect the graph.
