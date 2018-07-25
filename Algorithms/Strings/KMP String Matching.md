@@ -5,8 +5,11 @@ String Matching is a problem of finding the starting index (or indices) of a (su
 **Example:**
 
 Assume that we have T = "STEVEN EVENT".
+
 - If P = "EVE", then the answers are indices 2 and 7.
+
 - If P = "EVENT", then the answer is index 7 only.
+
 - If P = "EVENING", then there is no answer.
 
 ### Naïve solution
