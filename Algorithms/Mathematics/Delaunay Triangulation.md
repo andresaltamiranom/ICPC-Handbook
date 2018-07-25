@@ -9,12 +9,16 @@ The problem of finding the Delaunay triangulation of a set of points in d-dimens
 ## Applications
 
 1) The Euclidean minimum spanning tree of a set of points is a subset of the Delaunay triangulation of the same points, and this can be exploited to compute it efficiently.
+
 2) For modelling terrain or other objects given a set of sample points, the Delaunay triangulation gives a nice set of triangles to use as polygons in the model. In particular, the Delaunay triangulation avoids narrow triangles (as they have large circumcircles compared to their area).
+
 3) Delaunay triangulations can be used to determine the density or intensity of points samplings by means of the Delaunay tessellation field estimator (DTFE).
+
 4) Delaunay triangulations are often used to build meshes for space-discretised solvers such as the finite element method and the finite volume method of physics simulation, because of the angle guarantee and because fast triangulation algorithms have been developed.
+
 5) Constrained Delaunay triangulation (a generalization of the Delaunay triangulation that forces certain required segments into the triangulation) has found applications in path planning in automated driving.
 
-Following is an implementation that can find the Delaunay triangulation of a given set of points.
+Following is an implementation that can find the Delaunay triangulation of a given set of points:
 
 ```cpp
 
