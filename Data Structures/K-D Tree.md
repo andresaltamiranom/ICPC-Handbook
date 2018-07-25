@@ -24,9 +24,13 @@ Due to the curse of dimensionality, which leads most searches in high dimensiona
 -  O(n * log^2(n)) if an O(n * log(n)) sort such as Heapsort or Mergesort is used to find the median at each level of the nascent tree.
 - O(n * log(n)) if an O(n) median of medians algorithm is used to select the median at each level of the nascent tree.
 - O(k * n * log(n)) if n points are presorted in each of k dimensions using an O(n * log(n)) sort such as Heapsort or Mergesort prior to building the K-D Tree.
+
 2) Inserting a new point into a balanced K-D Tree takes O(log(n)) time.
+
 3) Removing a point from a balanced K-D Tree takes O(log(n)) time.
+
 4) Querying an axis-parallel range in a balanced K-D Tree takes O(n^(1 − 1 / k) + m) time, where m is the number of the reported points, and k the dimension of the K-D Tree.
+
 5) Finding 1 nearest neighbour in a balanced K-D Tree with randomly distributed points takes O(log(n)) time on average.
 
 Following is an implementation of a K-D Tree:
