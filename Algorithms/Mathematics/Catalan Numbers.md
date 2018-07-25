@@ -4,11 +4,14 @@ Catalan numbers are a sequence of positive integers that appear in many counting
 
 Examples of problems that can be solved using catalan numbers are:
 
-	- Counting the number of expressions containing n pairs of parentheses which are correctly matched.
-	- Counting the number of different ways n + 1 factors can be completely parenthesized.
-	- Counting the number of full binary trees with n + 1 leaves.
-	- Counting the number of different ways a convex polygon with n + 2 sides can be cut into triangles by connecting vertices with non-crossing line segments.
- 
+- Counting the number of expressions containing n pairs of parentheses which are correctly matched.
+
+- Counting the number of different ways n + 1 factors can be completely parenthesized.
+
+- Counting the number of full binary trees with n + 1 leaves.
+
+- Counting the number of different ways a convex polygon with n + 2 sides can be cut into triangles by connecting vertices with non-crossing line segments.
+
 ## Helper Functions
 
 ### Factorial
