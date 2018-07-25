@@ -4,9 +4,12 @@ The Miller–Rabin primality test is an algorithm which determines whether a giv
 
 Below are some important facts behind this algorithm:
 
-1) Fermat’s theorem states that: If _n_ is a prime number, then for every _a_, _1 <= a < n_, _a^(n-1) % n = 1_
+1) Fermat’s theorem states that: If _n_ is a prime number, then for every _a_, _1 <= a < n_, _a^(n-1) % n = 1_.
+
 2) Base cases make sure that _n_ must be odd. Since _n_ is odd, _n-1_ must be even. And an even number can be written as _d * 2^s_ where _d_ is an odd number and _s > 0_.
+
 3) From the above two points, for every randomly picked number in range _[2, n-2]_, the value of _a^(d*2^r) % n_ must be 1.
+
 4) As per Euclid’s Lemma, if _x^2 % n = 1_ or _(x^2 – 1) % n = 0_ or _(x-1)(x+1) % n = 0_, then, for _n_ to be prime, either _n_ divides _(x-1)_ or _n_ divides _(x+1)_. Which means either _x % n = 1_ or _x % n = -1_.
 
 From points 2 and 3, we can conclude:
