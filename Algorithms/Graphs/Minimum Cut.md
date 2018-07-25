@@ -6,8 +6,7 @@ There are two ways of solving this problem: using Maximum Flow algorithm and usi
 
 ## Using Maximum Flow Algorithm
 
-Let’s define an s-t cut C = (S-component, T-component) as a partition of V ∈ G such that source s ∈ S-component and sink t ∈ T-component.  Let’s also define a _cut-set_ of C to be the set {(u, v) ∈ E | u ∈ S-component, v ∈ T-component} such that if all edges in the cut-set of C are removed, the Max Flow from s to t is 0 (i.e. s and t are disconnected). The cost
-of an s-t cut C is defined by the sum of the capacities of the edges in the cut-set of C.
+Let’s define an s-t cut C = (S-component, T-component) as a partition of V belonging to a set G such that source s belonging to a set S-component and sink t belonging to a set T-component. Let’s also define a _cut-set_ of C to be the set {(u, v) belonging to a set E | u belonging to a set S-component, v belonging to a set T-component} such that if all edges in the cut-set of C are removed, the Max Flow from s to t is 0 (i.e. s and t are disconnected). The cost of an s-t cut C is defined by the sum of the capacities of the edges in the cut-set of C.
 
 The solution is simple: The by-product of computing Max Flow is Min Cut!
 
