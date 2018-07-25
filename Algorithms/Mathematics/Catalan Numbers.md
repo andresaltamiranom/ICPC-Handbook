@@ -48,7 +48,7 @@ int nthCatalan(int n) {
 
 The Nth Catalan number is given directly in terms of binomial coefficients by the following closed formula:
 
-![alt text](https://wikimedia.org/api/rest_v1/media/math/render/svg/34d4f28865115a05a806649a40f84e1bbc736320)
+![alt text](https://i.imgur.com/PLY1Gu0.png)
 
 ### nextCatalan
 
@@ -66,6 +66,6 @@ int nextCatalan(int n, int previous) {
 
 All Catalan numbers satisfy the following recurrence relations:
 
-![alt text](https://wikimedia.org/api/rest_v1/media/math/render/svg/79756c79f56fb6c5669408007a9152217e610580)
+![alt text](https://i.imgur.com/k3mNu6f.png)
 
 To get the _Nth+1_ Catalan number, we just plug in the given formula for _Cn+1_.
