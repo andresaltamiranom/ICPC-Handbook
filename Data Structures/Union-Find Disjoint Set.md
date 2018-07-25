@@ -42,7 +42,7 @@ struct UnionFindDS2 {
 	vi tree, sizes;
 	int N;
 	UnionFindDS2(int n) : N(n) {
-		tree.reserve(n);
+		tree.assign(n, 0);
 		FOR(i, 0, n) tree[i] = i;
 		sizes.assign(n, 1);
 	}
