@@ -4,11 +4,11 @@ The push–relabel algorithm is considered one of the most efficient maximum flo
 
 The name "push–relabel" comes from the two basic operations used in the algorithm. Throughout its execution, the algorithm maintains a "preflow" and gradually converts it into a maximum flow by moving flow locally between neighboring nodes using push operations under the guidance of an admissible network maintained by relabel operations. In comparison, the Ford–Fulkerson algorithm performs global augmentations that send flow following paths from the source all the way to the sink.
 
-We are given a directed capacitated graph G = (V, E) with source s and sink t, and want to find a max s-t flow. Let's imagine all nodes are reachable from s, and can reach t. (All other nodes can be deleted.) For brevity, we denote the directed edges (u, v) ∈ E merely as uv.
+We are given a directed capacitated graph G = (V, E) with source s and sink t, and want to find a max s-t flow. Let's imagine all nodes are reachable from s, and can reach t. (All other nodes can be deleted.) For brevity, we denote the directed edges (u, v) belonging to a set E merely as uv.
 
 ### Preflows
 
-The algorithm will send flow along edges. But in contrast to other algorithms, we will not maintain a flow at each point in time — we will only maintain a “preflow”. What’s a preflow? It's what we get when we don't have flow conservation at even the non-s-t nodes: in a preflow the flow entering the node is allowed to be more than the flow leaving it. (It is not allowed to be less.) So if f is a preflow, then for all v ∈ V \ {s, t}:
+The algorithm will send flow along edges. But in contrast to other algorithms, we will not maintain a flow at each point in time — we will only maintain a “preflow”. What’s a preflow? It's what we get when we don't have flow conservation at even the non-s-t nodes: in a preflow the flow entering the node is allowed to be more than the flow leaving it. (It is not allowed to be less.) So if f is a preflow, then for all v belonging to a set V \ {s, t}:
 
 ![Push-relabel](https://i.imgur.com/zHRkdRg.png)
 
@@ -28,7 +28,7 @@ Given a preflow f, a node v has some excess value ef(v) ≥ 0, this is just the 
 
 ![Push-relabel](https://i.imgur.com/Px81us4.png)
 
-A node v is active if v ∉ {s, t} and ef(v) > 0. (In the preflow example above, the nodes a, c, d, e, are all active, with excesses of 2, 5, 1 and 2 respectively.)
+A node v is active if v does not belong to {s, t} and ef(v) > 0. (In the preflow example above, the nodes a, c, d, e, are all active, with excesses of 2, 5, 1 and 2 respectively.)
 
 Let Ef denote the edges of the residual graph with respect to the preflow (and let Gf denote the residual graph itself). As before, when you send flow f along an edge uv with capacity c, in the residual graph you get an edge uv with capacity c − f, and you also get the reverse edge vu with capacity f. If c = f then we drop the edge uv from Ef (since it has residual capacity c − f = 0), so Ef only contains the arcs with non-zero residual capacity. The residual graph corresponding to the preflow figure is this:
 
@@ -36,7 +36,7 @@ Let Ef denote the edges of the residual graph with respect to the preflow (and l
 
 ### Labelings
 
-Each node v is given a _label_ d(v) ∈ Z≥0 (Z refers to the integer numbers set). A labeling is valid for preflow f if for all edges uv in Ef, we have d(u) ≤ d(v) + 1. We will maintain the invariant that our current labeling is valid for the current preflow. Call an arc uv _admissible_ if uv ∈ Ef and d(u) ≥ d(v) + 1. Since we always have a valid labeling, we also have the inequality (d(u) ≤ d(v) + 1). Putting the two together, admissible edges uv in fact satisfy the _equality_ d(u) = d(v) + 1. These admissible edges will be the ones we will try to advance flow on.
+Each node v is given a _label_ d(v) belonging to the set Z≥0 (Z refers to the integer numbers set). A labeling is valid for preflow f if for all edges uv in Ef, we have d(u) ≤ d(v) + 1. We will maintain the invariant that our current labeling is valid for the current preflow. Call an arc uv _admissible_ if uv ∈ Ef and d(u) ≥ d(v) + 1. Since we always have a valid labeling, we also have the inequality (d(u) ≤ d(v) + 1). Putting the two together, admissible edges uv in fact satisfy the _equality_ d(u) = d(v) + 1. These admissible edges will be the ones we will try to advance flow on.
 
 Following is an implementation of the Push-Relabel Algorithm:
 
