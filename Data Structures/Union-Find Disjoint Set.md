@@ -16,7 +16,7 @@ Assume that we have the sets {1,4,7}, {5}, and {2,3,6,8}:
 
 ![UFDS](https://i.imgur.com/GM4LddW.png)
 
-In this case the representatives of the sets are 4, 5, and 2. We can find the representative of any element by following the chain that begins at the element. For example, the element 2 is the representative for the element 6, because we follow the chain 6 -> 3 -> 2. Two elements belong to the same set exactly when their representatives are the same.
+In this case the representatives of the sets are 4, 5, and 2. We can find the representative of any element by following the chain that begins at the element. For example, the element 2 is the representative for the element 6, because we follow the chain 6 --> 3 --> 2. Two elements belong to the same set exactly when their representatives are the same.
 
 Two sets can be joined by connecting the representative of one set to the representative of the other set. For example, the sets {1,4,7} and {2,3,6,8} can be joined as follows:
 
