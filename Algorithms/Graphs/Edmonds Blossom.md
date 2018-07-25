@@ -7,8 +7,11 @@ The blossom algorithm can be used on any graph to construct a maximum matching. 
 The blossom algorithm takes a general graph G = (V, E) and finds a maximum matching M. The algorithm starts with an empty matching and then iteratively improves it by adding edges, one at a time, to build augmenting paths in the matching M. Adding to an augmenting path can grow a matching since every other edge in an augmenting path is an edge in the matching; as more edges are added to the augmenting path, more matching edges are discovered.
 
 The blossom algorithm has three possible results after each iteration:
+
 - The algorithm finds no augmenting paths, in which case it has found a maximum matching.
+
 - An augmenting path can be found in order to improve the outcome.
+
 - A blossom can be found in order to manipulate it and discover a new augmenting path.
 
 ### Augmenting Paths
@@ -30,7 +33,6 @@ The goal of the algorithm is to shrinks a blossom into a single node in order to
 Notice the toggling in edges to make another matched edge the stem of the blossom.
 
 ![Edmonds Blossom](https://ds055uzetaobb.cloudfront.net/image_optimizer/47213ea24e7978bca2464721c5a566a38442bc29.png)
-
 
 
 ## Complexity
