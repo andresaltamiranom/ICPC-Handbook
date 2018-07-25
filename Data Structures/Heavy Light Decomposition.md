@@ -11,7 +11,9 @@ Now, the path from any node _A_ to any node _B_ can be  broken into two paths: _
 So we know the following regarding HLD:
 
 1) We can break the tree into chains such that we will have to change at most log(N) chains to move from any node up the tree to any other node.
+
 2) Any path can be broken into two paths such that both paths start at some node and move up the tree.
+
 3) Queries in each chain can be answered with O(log(N)) complexity and there are at most log(N) chains we need to consider per path. So, in the end, we will have a O(log^2(N)) complexity solution to process queries on the tree.
 
 Let's try to solve an example to better understand how HLD is used.
@@ -22,7 +24,8 @@ You are given a tree (an acyclic undirected connected graph) with N nodes, and e
 
 We will ask you to perform some instructions of the following form:
 
-1) CHANGE _i_ _ti_: Change the cost of the _i_-th edge to _ti_
+1) CHANGE _i_ _ti_: Change the cost of the _i_-th edge to _ti_.
+
 2) QUERY _a_ _b_: Ask for the maximum edge cost on the path from node _a_ to node _b_.
 
 To solve this, Heavy Light Decomposition will allow us to respond to these queries in a quick manner.
