@@ -36,7 +36,7 @@ Let Ef denote the edges of the residual graph with respect to the preflow (and l
 
 ### Labelings
 
-Each node v is given a _label_ d(v) belonging to the set Z≥0 (Z refers to the integer numbers set). A labeling is valid for preflow f if for all edges uv in Ef, we have d(u) ≤ d(v) + 1. We will maintain the invariant that our current labeling is valid for the current preflow. Call an arc uv _admissible_ if uv ∈ Ef and d(u) ≥ d(v) + 1. Since we always have a valid labeling, we also have the inequality (d(u) ≤ d(v) + 1). Putting the two together, admissible edges uv in fact satisfy the _equality_ d(u) = d(v) + 1. These admissible edges will be the ones we will try to advance flow on.
+Each node v is given a _label_ d(v) belonging to the set Z≥0 (Z refers to the integer numbers set). A labeling is valid for preflow f if for all edges uv in Ef, we have d(u) ≤ d(v) + 1. We will maintain the invariant that our current labeling is valid for the current preflow. Call an arc uv _admissible_ if uv belongs to Ef and d(u) ≥ d(v) + 1. Since we always have a valid labeling, we also have the inequality (d(u) ≤ d(v) + 1). Putting the two together, admissible edges uv in fact satisfy the _equality_ d(u) = d(v) + 1. These admissible edges will be the ones we will try to advance flow on.
 
 Following is an implementation of the Push-Relabel Algorithm:
 
