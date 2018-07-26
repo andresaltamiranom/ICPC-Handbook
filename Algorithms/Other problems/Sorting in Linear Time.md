@@ -17,9 +17,9 @@ If the array A contains n integers with a small range [L..R] (e.g. ‘human age�
 
 1. Prepare a ‘frequency array’ f with size k = R-L+1 and initialize f with zeroes. On the example array above, we have L=2, R=5, and k=4.
 
-2. We do one pass through array A and update the frequency of each integer that we see, i.e. for each i ∈ [0..n-1], we do f[A[i]-L]++. On the example array above, we have f[0] = 3, f[1] = 2, f[2] = 0, f[3] = 1.
+2. We do one pass through array A and update the frequency of each integer that we see, i.e. for each i in [0..n-1], we do f[A[i]-L]++. On the example array above, we have f[0] = 3, f[1] = 2, f[2] = 0, f[3] = 1.
 
-3. Once we know the frequency of each integers in that small range, we compute the prefix sums of each i, i.e. f[i] = [f-1] + f[i] ∀i ∈ [1..k-1]. Now, f[i] contains the number of elements less than or equal to i. On the example array above, we have f[0] = 3, f[1] = 5, f[2] = 5, f[3] = 6.
+3. Once we know the frequency of each integer in that small range, we compute the prefix sums of each i, i.e. f[i] = f[i-1] + f[i] for all i in [1..k-1]. Now, f[i] contains the number of elements less than or equal to i. On the example array above, we have f[0] = 3, f[1] = 5, f[2] = 5, f[3] = 6.
 
 4. Next, go backwards from i = n-1 down to i=0. We place A[i] at index f[A[i]-L]-1 as it is the correct location for A[i]. We decrement f[A[i]-L] by one so that the next copy of A[i] - if any — will be placed right before the current A[i]. On the example array above, we first put A[5] = 3 in index f[A[5]-2]-1 = f[1]-1 = 5-1 = 4 and decrement f[1] to 4. Next, we put A[4] = 3 — the same value as A[5] = 3 — now in index f[A[4]-2]-1 = f[1]-1 = 4-1 = 3 and decrement f[1] to 3. Then, we put A[3] = 2 in index f[A[3]-2]-1 = 2 and decrement f[0] to 2. We repeat the next three steps until we obtain a sorted array: {2, 2, 2, 3, 3, 5}.
 
