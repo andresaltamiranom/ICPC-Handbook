@@ -13,22 +13,22 @@ If graph G is a tree, we can find the MWIS of G using DP. Let _C(v, taken)_ be t
 1) If _v_ is a leaf vertex
 
 - _C(v, true) = w(v)_
-	  
-		If leaf _v_ is taken, then the weight of this subtree is the weight of this _v_.
+
+	- If leaf _v_ is taken, then the weight of this subtree is the weight of this _v_.
 	  
 - _C(v, false) = 0_
-	  
-		If leaf _v_ is not taken, then the weight of this subtree is 0.
+
+	- If leaf _v_ is not taken, then the weight of this subtree is 0.
 	  
 2) If _v_ is an internal vertex
 
 - _C(v, true) = w(v)_ + ∑ch in children(_v_) _C(ch, false)_
-	  
-		If root _v_ is taken, we add weight of _v_ but all children of _v_ **cannot** be taken.
+
+	- If root _v_ is taken, we add weight of _v_ but all children of _v_ **cannot** be taken.
 	  
 - _C(v, false) =_ ∑ch in children(_v_) _max(C(ch, true), C(ch, false))_
-	  
-		If root _v_ is not taken, children of _v_ may or may not be taken. We return the larger one.
+
+	- If root _v_ is not taken, children of _v_ may or may not be taken. We return the larger one.
 
 The answer is _max(C(root, 1), C(root, 0))_ — take or not take the root. This DP solution just requires O(V) space and O(V) time.
 
