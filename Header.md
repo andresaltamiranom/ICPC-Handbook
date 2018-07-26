@@ -1,6 +1,6 @@
 # Header
 
-The following code can be used as a template when starting a new program. This template facilitates and speeds up the coding process by defining macros that are shorter to write and read when creating code.
+The following code can be used as a template when starting a new program. This template facilitates and speeds up the coding process by defining macros that are shorter to write and to read when writing code.
 
 ```cpp
 
