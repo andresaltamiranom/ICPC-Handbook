@@ -21,5 +21,7 @@ Therefore, we can just run one BFS from an arbitrary source cell and do some adj
 To find these cases, consider the following:
 
 1) Separate cases when 3 ≤ _n_ ≤ 4 and _n_ ≥ 5.
+
 2) Literally concentrate on corner cells and side cells.
+
 3) What happens if the starting cell and the target cell are too close?
