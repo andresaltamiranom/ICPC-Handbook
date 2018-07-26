@@ -10,7 +10,7 @@ Given a graph G, find the maximum number of independent and edge-disjoint paths 
 
 ## Solution(s)
 
-The problem of finding the (maximum number of) independent paths from source _s_ to sink _t_ can be reduced to the Network (Max) Flow problem. We construct a flow network N = (V, E) from G with vertex capacities, where N is the carbon copy of G except that the capacity of each v ∈ V is 1 (i.e. each vertex can only be used once) and the capacity of each e ∈ E is also 1 (i.e. each edge can only be used once too). Then run the Edmonds Karp’s algorithm as per normal.
+The problem of finding the (maximum number of) independent paths from source _s_ to sink _t_ can be reduced to the Network (Max) Flow problem. We construct a flow network N = (V, E) from G with vertex capacities, where N is the carbon copy of G except that the capacity of each v belonging to V is 1 (i.e. each vertex can only be used once) and the capacity of each e belonging to E is also 1 (i.e. each edge can only be used once too). Then run the Edmonds Karp’s algorithm as per normal.
 
 ![alt text](https://i.imgur.com/SeWPV8f.png)
 
