@@ -28,7 +28,9 @@ A randomized partition algorithm: **RandomizedPartition(A, l, r)** is an algorit
 After performing q = **RandomizedPartition(A, 0, n - 1)**, all elements ≤ A[q] will be placed before the pivot and therefore A[q] is now in it’s correct order statistic, which is q + 1. Then, there are only 3 possibilities:
 
 1. q + 1 = k, A[q] is the desired answer. We return this value and stop.
+
 2. q + 1 > k, the desired answer is inside the left partition, e.g. in A[0..q-1].
+
 3. q + 1 < k, the desired answer is inside the right partition, e.g. in A[q+1..n-1].
 
 This process can be repeated recursively on smaller range of search space until we find the required answer. A snippet of C++ code that implements this algorithm is shown below.
@@ -58,11 +60,12 @@ C++ STL has function **nth_element** in <_algorithm_>. This **nth_element** impl
 
 All solutions presented earlier assume that the given array is static — unchanged for each query of the k-th smallest element. However, if the content of the array is frequently modified, i.e. a new element is added, an existing element is removed, or the value of an existing element is changed, the solutions outlined above become inefficient.
 
-When the underlying data is dynamic, we need to use a balanced Binary Search Tree. First, we insert all n elements into a balanced BST in O(n * log(n)) time. We also augment (add information) about the size of each sub-tree rooted at each vertex. This way, we can find the k-th smallest element in O(log(n)) time by comparing k with q — the size
-of the left sub-tree of the root:
+When the underlying data is dynamic, we need to use a balanced Binary Search Tree. First, we insert all n elements into a balanced BST in O(n * log(n)) time. We also augment (add information) about the size of each sub-tree rooted at each vertex. This way, we can find the k-th smallest element in O(log(n)) time by comparing k with q — the size of the left sub-tree of the root:
 
 1. If q + 1 = k, then the root is the desired answer. We return this value and stop.
+
 2. If q + 1 > k, the desired answer is inside the left sub-tree of the root.
+
 3. If q + 1 < k, the desired answer is inside the right sub-tree of the root and we are now searching for the (k−q−1)-th smallest element in this right sub-tree. This adjustment of k is needed to ensure correctness.
 
 This process — which is similar with the expected O(n) algorithm for static selection problem — can be repeated recursively until we find the required answer. As checking the size of a sub-tree can be done in O(1) if we have properly augment the BST, this overall algorithm runs at worst in O(log(n)) time, from root to the deepest leaf of a balanced BST.
