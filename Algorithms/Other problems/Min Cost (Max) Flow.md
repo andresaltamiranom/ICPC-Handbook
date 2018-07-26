@@ -6,7 +6,7 @@ The Min Cost Flow problem is the problem of finding the _cheapest_ possible way 
 
 ![MCMF](https://i.imgur.com/7ZRPpjl.png)
 
-In the left figure above, each edge has a uniform capacity of 10 units and a unit cost as shown in the edge label. We want to send 20 units of flow from A to D (note that the max flow of this flow graph is 30 units) which can be satisfied by sending 10 units of flow A → D with cost 1 * 10 = 10 (middle figure); plus another 10 units of flow A → B → D with cost (3 + 4) * 10 = 70 (right figure). The total cost is 10 + 70 = 80 and this is the minimum. Note that if we choose to send the 20 units of flow via A → D (10 units) and A → C → D instead, we incur a cost of 1 * 10 + (3 + 5) * 10 = 10 + 80 = 90. This is higher than the optimal cost of 80.
+In the left figure above, each edge has a uniform capacity of 10 units and a unit cost as shown in the edge label. We want to send 20 units of flow from A to D (note that the max flow of this flow graph is 30 units) which can be satisfied by sending 10 units of flow A -> D with cost 1 * 10 = 10 (middle figure); plus another 10 units of flow A -> B -> D with cost (3 + 4) * 10 = 70 (right figure). The total cost is 10 + 70 = 80 and this is the minimum. Note that if we choose to send the 20 units of flow via A -> D (10 units) and A -> C -> D instead, we incur a cost of 1 * 10 + (3 + 5) * 10 = 10 + 80 = 90. This is higher than the optimal cost of 80.
 
 ## Solution(s)
 
