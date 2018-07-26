@@ -21,9 +21,12 @@ Due to the curse of dimensionality, which leads most searches in high dimensiona
 ## Complexity
 
 1) Building a static K-D Tree from n points has the following worst-case complexity:
--  O(n * log^2(n)) if an O(n * log(n)) sort such as Heapsort or Mergesort is used to find the median at each level of the nascent tree.
-- O(n * log(n)) if an O(n) median of medians algorithm is used to select the median at each level of the nascent tree.
-- O(k * n * log(n)) if n points are presorted in each of k dimensions using an O(n * log(n)) sort such as Heapsort or Mergesort prior to building the K-D Tree.
+
+	-  O(n * log^2(n)) if an O(n * log(n)) sort such as Heapsort or Mergesort is used to find the median at each level of the nascent tree.
+
+	- O(n * log(n)) if an O(n) median of medians algorithm is used to select the median at each level of the nascent tree.
+
+	- O(k * n * log(n)) if n points are presorted in each of k dimensions using an O(n * log(n)) sort such as Heapsort or Mergesort prior to building the K-D Tree.
 
 2) Inserting a new point into a balanced K-D Tree takes O(log(n)) time.
 
