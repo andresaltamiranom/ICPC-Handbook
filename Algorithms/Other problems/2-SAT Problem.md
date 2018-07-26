@@ -4,9 +4,9 @@
 
 You are given a conjunction of disjunctions (“and of ors”) where each disjunction (“the or operation”) has two arguments that may be variables or the negation of variables. The disjunctions of pairs are called as ‘clauses’ and the formula is known as the 2-CNF (Con- junctive Normal Form) formula. The 2-SAT problem is to find a truth (that is, true or false) assignment to these variables that makes the 2-CNF formula true, i.e. every clause has at least one term that is evaluated to true.
 
-**Example 1**: (x1 ∨ x2) ∧ (¬x1 ∨ ¬x2) is satisfiable because we can assign x1 = true and x2 = false (alternative assignment is x1 = false and x2 = true).
+**Example 1**: (x1 or x2) and (¬x1 or ¬x2) is satisfiable because we can assign x1 = true and x2 = false (alternative assignment is x1 = false and x2 = true).
 
-**Example 2**: (x1 ∨ x2) ∧ (¬x1 ∨ x2) ∧ (¬x2 ∨ x3) ∧ (¬x2 ∨ ¬x3) is not satisfiable. You can try all 8 possible combinations of boolean values of x1, x2, and x3 to realize that none of them can make the 2-CNF formula satisfiable.
+**Example 2**: (x1 or x2) and (¬x1 or x2) and (¬x2 or x3) and (¬x2 or ¬x3) is not satisfiable. You can try all 8 possible combinations of boolean values of x1, x2, and x3 to realize that none of them can make the 2-CNF formula satisfiable.
 
 ## Solution(s)
 
@@ -18,7 +18,7 @@ The 2-SAT is a special case of Satisfiability problem and it admits a polynomial
 
 ### Reduction to Implication Graph and Finding SCC
 
-First, we have to realize that a clause in a 2-CNF formula (a ∨ b) ≡ (¬a ⇒ b) ≡ (¬b ⇒ a). Thus, given a 2-CNF formula, we can build the corresponding ‘implication graph’. Each variable has two vertices in the implication graph, the variable itself and the negation/inverse of that variable. An edge connects one vertex to another if the corresponding variables are related by an implication in the corresponding 2-CNF formula. For the two 2-CNF example formulas above, we have the following implication graphs:
+First, we have to realize that a clause in a 2-CNF formula (a or b) = (¬a implies b) = (¬b implies a). Thus, given a 2-CNF formula, we can build the corresponding ‘implication graph’. Each variable has two vertices in the implication graph, the variable itself and the negation/inverse of that variable. An edge connects one vertex to another if the corresponding variables are related by an implication in the corresponding 2-CNF formula. For the two 2-CNF example formulas above, we have the following implication graphs:
 
 ![2-SAT](https://i.imgur.com/uKqVr1k.png)
 
