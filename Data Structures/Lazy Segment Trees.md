@@ -24,7 +24,7 @@ When the elements in [a, b] are increased by a value _u_, we walk from the root 
 
 - If the range [x, y] of a node is completely inside [a, b], we increase the _z_ value of the node by _u_ and stop.
 
-- If [x, y] only partially belongs to [a, b], we increase the _s_ value of the node by _h_\*_u_, where _h_ is the size of the intersection of [a, b] and [x, y], and continue our walk recursively in the tree.
+- If [x, y] only partially belongs to [a, b], we increase the _s_ value of the node by _h_ * _u_, where _h_ is the size of the intersection of [a, b] and [x, y], and continue our walk recursively in the tree.
 
 For example, the following picture shows the tree after increasing the elements in [a, b] by 2:
 
