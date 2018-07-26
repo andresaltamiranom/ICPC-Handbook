@@ -23,7 +23,7 @@ runs in O(n * log(n)) overall.
 
 An even better algorithm for the selection problem is to apply Divide and Conquer paradigm. The key idea of this algorithm is to use the O(n) Partition algorithm (the randomized version) from Quick Sort as its sub-routine.
 
-A randomized partition algorithm: **RandomizedPartition(A, l, r)** is an algorithm to partition a given range [l..r] of the array A around a (random) pivot. Pivot A[p] is one of the element of A where p ∈ [l..r]. After partition, all elements ≤ A[p] are placed before the pivot and all elements > A[p] are placed after the pivot. The final index of the pivot q is returned. This randomized partition algorithm can be done in O(n).
+A randomized partition algorithm: **RandomizedPartition(A, l, r)** is an algorithm to partition a given range [l..r] of the array A around a (random) pivot. Pivot A[p] is one of the elements of A where p is in [l..r]. After partition, all elements ≤ A[p] are placed before the pivot and all elements > A[p] are placed after the pivot. The final index of the pivot q is returned. This randomized partition algorithm can be done in O(n).
 
 After performing q = **RandomizedPartition(A, 0, n - 1)**, all elements ≤ A[q] will be placed before the pivot and therefore A[q] is now in it’s correct order statistic, which is q + 1. Then, there are only 3 possibilities:
 
@@ -54,7 +54,7 @@ cost of **RandomizedPartition** as all other steps of **RandomizedSelect** are O
 
 ### Library solution for the expected O(n) algorithm, static data
 
-C++ STL has function **nth_element** in <_algorithm_>. This **nth_element** implements the expected O(n) algorithm as shown above. However as of 24 May 2013, we are not aware of a Java equivalent for this function.
+C++ STL has function **nth_element** in the _algorithm_ library. This **nth_element** implements the expected O(n) algorithm as shown above. However as of 24 May 2013, we are not aware of a Java equivalent for this function.
 
 ### O(n * log(n)) pre-processing, O(log(n)) algorithm, dynamic data
 
