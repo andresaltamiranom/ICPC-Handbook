@@ -2,12 +2,14 @@
 
 ## Problem Description
 
-The ‘Art Gallery’ Problem is a family of related visibility problems in computational geometry. In this section, we discuss several variants. The common terms used in the variants discussed below are the simple (not necessarily convex) polygon P to describe the art gallery; a set of points S to describe the guards where each guard is represented by a point in P; a rule that a point A ∈ S can guard another point B ∈ P if and only if A ∈ S,B ∈ P, and line segment AB is contained in P; and a question on whether all points in polygon P are guarded by S. Many variants of this Art Gallery Problem are classified as NP-hard problems.
+The ‘Art Gallery’ Problem is a family of related visibility problems in computational geometry. In this section, we discuss several variants. The common terms used in the variants discussed below are the simple (not necessarily convex) polygon P to describe the art gallery; a set of points S to describe the guards where each guard is represented by a point in P; a rule that a point A belonging to set S can guard another point B belonging to set P if and only if A belongs to S, B belongs to P, and line segment AB is contained in P; and a question on whether all points in polygon P are guarded by S. Many variants of this Art Gallery Problem are classified as NP-hard problems.
 
 1. Variant 1: Determine the upper bound of the smallest size of set S.
-2. Variant 2: Determine if ∃ a critical point C in polygon P and ∃ another point D ∈ P
-such that if the guard is at position C, the guard cannot protect point D.
+
+2. Variant 2: Determine if there exists a critical point C in polygon P and there exists another point D belonging to P such that if the guard is at position C, the guard cannot protect point D.
+
 3. Variant 3: Determine if polygon P can be guarded with just one guard.
+
 4. Variant 4: Determine the smallest size of set S if the guards can only be placed at the vertices of polygon P and only the vertices need to be guarded.
 
 Note that there are many more variants other than the ones presented.
