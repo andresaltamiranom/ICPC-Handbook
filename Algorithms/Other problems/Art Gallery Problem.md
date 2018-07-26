@@ -16,7 +16,7 @@ Note that there are many more variants other than the ones presented.
 
 ## Solution(s)
 
-1. The solution for variant 1 is a theoretical work of the Art Gallery theorem by Václav Chvátal. He states that ⌊n/3⌋ guards are always sufficient and sometimes necessary to guard a simple polygon with _n_ vertices.
+1. The solution for variant 1 is a theoretical work of the Art Gallery theorem by Václav Chvátal. He states that _floor(n/3)_ guards are always sufficient and sometimes necessary to guard a simple polygon with _n_ vertices.
 
 2. The solution for variant 2 involves testing if polygon P is concave (and thus has a critical point). We can use the negation of the _isConvex()_ function.
 
