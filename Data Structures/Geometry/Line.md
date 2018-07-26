@@ -115,8 +115,8 @@ For this problem, it is important to understand **orientation**. Orientation of 
 
 Two lines intersect only if both of the following conditions are satisfied:
 
-	– Points A-B-C and A-B-D have different orientations
-	– Points C-D-A and C-D-B have different orientations
+- Points A-B-C and A-B-D have different orientations
+- Points C-D-A and C-D-B have different orientations
 	
 We also know that if the magnitude of the cross product of two vectors is positive, it forms a left turn. If it is negative, it forms a right turn. If it is zero, it is collinear.
 
