@@ -7,8 +7,11 @@ Graph matching consists of selecting a subset of edges M of a graph G(V, E) so t
 There are two important attributes of graph matching problems in programming contests that can significantly alter the level of difficulty: Whether the input graph is bipartite (harder otherwise) and whether the input graph is unweighted (harder otherwise). These two characteristics create four variants as outlined below as well as in the figure.
 
 1) **Unweighted Maximum Cardinality Bipartite Matching (Unweighted MCBM)**: This is the easiest and the most common variant.
+
 2) **Weighted Maximum Cardinality Bipartite Matching (Weighted MCBM)**: This is a similar problem as above, but now the edges in G have weights. We usually want the MCBM with the minimum total weight.
+
 3) **Unweighted Maximum Cardinality Matching (Unweighted MCM)**: The graph is not guaranteed to be bipartite.
+
 4) **Weighted Maximum Cardinality Matching (Weighted MCM)**: This is the hardest variant.
 
 ![alt text](https://i.imgur.com/NmpJbDb.png)
@@ -20,14 +23,16 @@ There are two important attributes of graph matching problems in programming con
 This variant is the easiest. The list below summarizes three possible solutions for the Unweighted MCBM problems:
 
 1) Reducing the Unweighted MCBM problem into a Max Flow Problem. The time complexity depends on the chosen Max Flow algorithm.
+
 2) O(V^2 + VE) Augmenting Path Algorithm for Unweighted MCBM. This is good enough for various contest problems involving Unweighted MCBM.
+
 3) O(√V E) Hopcroft Karp’s Algorithm for Unweighted MCBM.
 
 ### Solutions for Weighted MCBM
 
 When the edges in the bipartite graph are weighted, not all possible MCBMs are optimal. We need to pick one (not necessarily unique) MCBM that has the minimum overall total weight. One possible solution is to reduce the Weighted MCBM problem into a Min Cost Max Flow (MCMF) problem.
 
-For example, in the following figure, we have a MCBM problem on a complete bipartite graph K(n,m), but each edge has an associated cost. We add edges from source _s_ to vertices of the left set with capacity 1 and cost 0. We also add edges from vertices of the right set to the sink _t_ also with capacity 1 and cost 0. The directed edges from the left set to the right set has capacity 1 and a cost. After having this weighted flow graph, we can run the MCMF algorithm to get the required answer: Flow 1 = 0 → 2 → 4 → 8 with cost 5, Flow 2 = 0 → 1 → 4 → 2 (cancel flow 2-4) → 6 → 8 with cost 15, and Flow 3 = 0 → 3 → 5 → 8 with cost 20. The minimum total cost is 5 + 15 + 20 = 40.
+For example, in the following figure, we have a MCBM problem on a complete bipartite graph K(n,m), but each edge has an associated cost. We add edges from source _s_ to vertices of the left set with capacity 1 and cost 0. We also add edges from vertices of the right set to the sink _t_ also with capacity 1 and cost 0. The directed edges from the left set to the right set has capacity 1 and a cost. After having this weighted flow graph, we can run the MCMF algorithm to get the required answer: Flow 1 = 0 -> 2 -> 4 -> 8 with cost 5, Flow 2 = 0 -> 1 -> 4 -> 2 (cancel flow 2-4) -> 6 -> 8 with cost 15, and Flow 3 = 0 -> 3 -> 5 -> 8 with cost 20. The minimum total cost is 5 + 15 + 20 = 40.
 
 ![alt text](https://i.imgur.com/pY4q5u3.png)
 
