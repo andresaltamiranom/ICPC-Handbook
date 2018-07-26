@@ -10,7 +10,7 @@ Our task is to construct a magic square given its size _n_, assuming that _n_ is
 
 ## Solution(s)
 
-If we do not know the solution, we may have to use the standard recursive backtracking routine that tries to place each integer ∈ [1..n^2] one by one. Such Complete Search solution is too slow for a large _n_.
+If we do not know the solution, we may have to use the standard recursive backtracking routine that tries to place each integer in [1..n^2] one by one. Such Complete Search solution is too slow for a large _n_.
 
 Fortunately, there is a nice ‘construction strategy’ for magic square of odd size called the ‘Siamese (De la Loubère) method’. We start from an empty 2D square array. Initially, we put integer 1 in the middle of the first row. Then we move northeast, wrapping around as necessary. If the new cell is currently empty, we add the next integer in that cell. If the cell has been occupied, we move one row down and continue going northeast. This Siamese method is shown in the figure below. We reckon that deriving this strategy without prior exposure to this problem is likely not straightforward (although not impossible if one stares at the structure of several odd-sized Magic Squares long enough).
 
